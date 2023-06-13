@@ -37,6 +37,7 @@ public class UiManager : MonoBehaviour
     {
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
+        // Maybe set a setting to let us check for the type of input for the testing with the real deal monitor.
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         if (gameCorrectingCv){
