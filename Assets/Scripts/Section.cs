@@ -6,7 +6,7 @@ using TMPro;
 
 public class Section : MonoBehaviour
 {
-    public bool isIncorrect;
+    public bool isIncorrect; // Checks if this section have error to be marked.
     [HideInInspector] public bool markedAsIncorrect;
     //
     private Button thisSection;
@@ -27,13 +27,20 @@ public class Section : MonoBehaviour
         initialColors = thisSection.colors;     
         initialColors.pressedColor  = Color.red; 
         thisSection.colors = initialColors;
+        // Check if this section is correct or not.
+        disableOneOfTheOptions();
         // Add the method on click
         thisSection.onClick.AddListener(taskOnClick);
         
     }
 
     private void disableOneOfTheOptions(){
-
+        if (isIncorrect){
+            correctOption.SetActive(false);
+        }
+        else {
+            incorrectOption.SetActive(false);
+        }
     }
 
     private void taskOnClick(){
