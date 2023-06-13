@@ -37,7 +37,7 @@ public class Section : MonoBehaviour
     }
 
     private void taskOnClick(){
-        if (GSInputManager.Instance.playerInputAllowed){
+        if (UiManager.Instance.playerInputAllowed){
             if (!markedAsIncorrect){
                 sectionMarkedAsIncorrect(true);
                 
@@ -46,7 +46,7 @@ public class Section : MonoBehaviour
                 sectionMarkedAsIncorrect(false);
                 
             }
-            Debug.Log(thisSection + " : " + markedAsIncorrect);
+            //Debug.Log(thisSection + " : " + markedAsIncorrect);
         }
     }
 
