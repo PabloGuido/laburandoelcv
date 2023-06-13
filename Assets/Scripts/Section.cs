@@ -11,36 +11,53 @@ public class Section : MonoBehaviour
     //
     private Button thisSection;
     private ColorBlock initialColors; // This var keeps the original colors of the button, not ment to be change ever.
+    // Childs
+    GameObject correctOption;
+    GameObject incorrectOption;
+
     // Start is called before the first frame update
     void Start()
     {
-        thisSection = gameObject.GetComponent<Button>(); // Gets the button/section
-        initialColors = thisSection.colors;        
-        
-        
+        // Gets the button/section:
+        thisSection = gameObject.GetComponent<Button>();
+        // Gets the childs:
+        correctOption = gameObject.transform.Find("Correct Option").gameObject;
+        incorrectOption = gameObject.transform.Find("Incorrect Option").gameObject;
+        // Sets the initial colors of buttons we will need. This is used to restore a section that have been clicked:
+        initialColors = thisSection.colors;     
         initialColors.pressedColor  = Color.red; 
-        
         thisSection.colors = initialColors;
-        //
-
+        // Add the method on click
         thisSection.onClick.AddListener(taskOnClick);
+        
+    }
+
+    private void disableOneOfTheOptions(){
 
     }
 
     private void taskOnClick(){
-        if (!markedAsIncorrect){
-            sectionMarkedAsIncorrect(true);
-            markedSectionChangeColor();
+        if (GSInputManager.Instance.playerInputAllowed){
+            if (!markedAsIncorrect){
+                sectionMarkedAsIncorrect(true);
+                
+            }
+            else {
+                sectionMarkedAsIncorrect(false);
+                
+            }
+            Debug.Log(thisSection + " : " + markedAsIncorrect);
         }
-        else {
-            sectionMarkedAsIncorrect(false);
-            restoreSectionColor();
-        }
-        Debug.Log(thisSection + " : " + markedAsIncorrect);
     }
 
     void sectionMarkedAsIncorrect(bool trueOrNot){
         markedAsIncorrect = trueOrNot;
+        if (trueOrNot){
+            markedSectionChangeColor();
+        }
+        else {
+            restoreSectionColor();
+        }
     }
 
     void markedSectionChangeColor(){
@@ -55,11 +72,5 @@ public class Section : MonoBehaviour
     void restoreSectionColor(){
         thisSection.colors = initialColors;
     }
-    
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 }
