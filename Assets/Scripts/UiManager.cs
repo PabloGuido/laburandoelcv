@@ -156,6 +156,7 @@ public class UiManager : MonoBehaviour
         case "animate":
             // code block
             playerCanClick = false;
+            moveTowards();
             break;
         case "next":
             // code block
