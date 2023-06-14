@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UiManager : MonoBehaviour
 {
+    public Camera cam;
     public static UiManager Instance;
     [HideInInspector] public bool playerInputAllowed = true;
     private bool gameCorrectingCv = false;
@@ -53,6 +55,16 @@ public class UiManager : MonoBehaviour
         playerInputAllowed = false;
 
         countdownToShowCv();
+        //tests
+        
+        
+        // var myVec = Cv.transform.Find("Photo").gameObject.GetComponent<RectTransform>().anchoredPosition;
+        // var myVec2 = Cv.GetComponent<RectTransform>();
+        
+        // Debug.Log(myVec);
+        // myVec2.DOAnchorPos(new Vector2(Mathf.Abs(myVec.x), -myVec.y)*3, 3, true);
+        // Cv.transform.DOScale(3, 3);
+       // Cv.transform.DOMoveX(324, 3);
     }
 
     void Update()
@@ -120,6 +132,12 @@ public class UiManager : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
+                    var myVec = Cv.transform.Find("Photo").gameObject.GetComponent<RectTransform>().anchoredPosition;
+        var myVec2 = Cv.GetComponent<RectTransform>();
+        
+        Debug.Log(myVec);
+        myVec2.DOAnchorPos(new Vector2(Mathf.Abs(myVec.x), -myVec.y)*3, 3, true);
+        Cv.transform.DOScale(3, 3);
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");

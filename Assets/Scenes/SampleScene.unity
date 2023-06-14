@@ -913,9 +913,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a00eb1c0db28f4db14eab2515389ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
   playerInputAllowed: 1
   skipCountdown: 1
-  timer: 5
+  timer: 10
 --- !u!1 &742975943
 GameObject:
   m_ObjectHideFlags: 0
