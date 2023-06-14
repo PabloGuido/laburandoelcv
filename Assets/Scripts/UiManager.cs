@@ -7,12 +7,18 @@ using DG.Tweening;
 
 public class UiManager : MonoBehaviour
 {
-    public Camera cam;
+    //
+    private int transTimer = 1;
+    //
+
     public static UiManager Instance;
     [HideInInspector] public bool playerInputAllowed = true;
     private bool gameCorrectingCv = false;
+    bool playerCanClick = false;
+
     // Show CV and countdown:
     GameObject Cv;
+    RectTransform CvRT;
     [SerializeField] private bool skipCountdown;
     private int countDownToCv = 5;
     private string[] countDownTexts = {"", "¡Ahora!","1", "2", "3", "¿Listo?"};
@@ -24,9 +30,14 @@ public class UiManager : MonoBehaviour
     private GameObject timerGO;
     // Time's up!:
     GameObject timesUp;
+    // Correction img:
+    GameObject correctionImg;
     // TextBox:
     GameObject textBox;
     TMP_Text textBoxText;
+    CorrectionsTexts textsAndPos;
+    int stepNumber = 0;
+    int moveTowardsNumber = 0;
     private void Awake()
     {
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
@@ -39,6 +50,7 @@ public class UiManager : MonoBehaviour
         // Show CV and countdown:
         Cv = gameObject.transform.Find("CV").gameObject;
         Cv.SetActive(false);
+        CvRT = Cv.GetComponent<RectTransform>();
         countDownTmp = gameObject.transform.Find("Countdown").gameObject.GetComponent<TMP_Text>();
         countDownTmpGO = gameObject.transform.Find("Countdown").gameObject;
         //Timer Time:
@@ -50,38 +62,39 @@ public class UiManager : MonoBehaviour
         // Time's Up!:
         timesUp = gameObject.transform.Find("Times up").gameObject;
         timesUp.SetActive(false);
+        // Correction img:
+        correctionImg = gameObject.transform.Find("CorrectionImg").gameObject;
+        correctionImg.SetActive(false);
         // TextBox:
         textBox = gameObject.transform.Find("TextBox").gameObject;
+        textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
         textBox.SetActive(false);
-        textBoxText = textBox.GetComponent<TMP_Text>();
+        // Texts
+        textsAndPos = gameObject.GetComponent<CorrectionsTexts>();
+
         
         // Deny input  to player before the CV appears:
         playerInputAllowed = false;
 
         countdownToShowCv();
-        //tests
-        
-        // ANIMS:
-        // var myVec = Cv.transform.Find("Photo").gameObject.GetComponent<RectTransform>().anchoredPosition;
-        // var myVec2 = Cv.GetComponent<RectTransform>();
-        
-        // Debug.Log(myVec);
-        // myVec2.DOAnchorPos(new Vector2(Mathf.Abs(myVec.x), -myVec.y)*3, 3, true);
-        // Cv.transform.DOScale(3, 3);
-        // Cv.transform.DOMoveX(324, 3);
+
     }
 
     void Update()
     {
+        
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         // Maybe set a setting to let us check for the type of input for the testing with the real deal monitor.
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
-        if (gameCorrectingCv){
-            // This input starts running after the times is up and while the game is correcting the CV.
-            if (Input.GetMouseButtonDown(0)){
-                //Debug.Log("Pressed primary button.");
+
+        // This input starts running after the times is up and while the game is correcting the CV.
+        if (Input.GetMouseButtonDown(0)){
+            // Debug.Log("GC " + gameCorrectingCv);
+            // Debug.Log("PC " + playerCanClick);
+            if (gameCorrectingCv && playerCanClick){
+                whatToDoNext(textsAndPos.step[stepNumber]);
             }
         }
     }
@@ -119,7 +132,7 @@ public class UiManager : MonoBehaviour
             //
             Debug.Log("Times up! Execute time up func.");
             theTimeIsUp();
-            gameCorrectingCv = true; // ESTO VA CUANDO DESAPARECE TIMES UP
+            
             //
             return;
         }
@@ -128,9 +141,59 @@ public class UiManager : MonoBehaviour
             changeTimerText(timer);
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    string testString = "";
+    void whatToDoNext(string doWhat){
+        testString = doWhat;
+        switch(testString) 
+        {
+        case "read":
+            // code block
+            updateTextBox();
+            playerCanClick = true;
+            Debug.Log("READ");
+            break;
+        case "animate":
+            // code block
+            playerCanClick = false;
+            break;
+        case "next":
+            // code block
+            break;
+        }
+        stepNumber ++;
+        
+    }
+
+    void moveTowards(){     
+        var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
+        Cv.transform.DOScale(3, 3);
+        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*3, 3, true);
+        moveTowardsNumber ++;
+    }
+
+    void updateTextBox(){
+        
+        textBoxText.text = textsAndPos.textToRender[stepNumber];
+        
+    }
 
     void showTextBox(){
         textBox.SetActive(true);
+        whatToDoNext(textsAndPos.step[stepNumber]);
+        Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
+    }
+
+    void showCorrectionImg(){
+        if (correctionImg.activeSelf){
+            correctionImg.SetActive(false);
+            gameCorrectingCv = true;
+            showTextBox();
+        }
+        else{
+            correctionImg.SetActive(true);
+            Invoke("showCorrectionImg", transTimer);
+        }
     }
 
     void theTimeIsUp(){
@@ -140,13 +203,14 @@ public class UiManager : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
-            showTextBox();
+
+            showCorrectionImg(); 
 
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
             timesUp.SetActive(true);
-            Invoke("theTimeIsUp", 3);
+            Invoke("theTimeIsUp", transTimer);
         }
 
     }
