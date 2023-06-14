@@ -24,6 +24,9 @@ public class UiManager : MonoBehaviour
     private GameObject timerGO;
     // Time's up!:
     GameObject timesUp;
+    // TextBox:
+    GameObject textBox;
+    TMP_Text textBoxText;
     private void Awake()
     {
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
@@ -43,28 +46,29 @@ public class UiManager : MonoBehaviour
         timerText = gameObject.transform.Find("Timer").gameObject.GetComponent<TMP_Text>();
         changeTimerText(timer); // Set the timer text to then be disabled and enabled.
         timerGO = gameObject.transform.Find("Timer").gameObject;
-        timerGO.SetActive(false);
-        
+        timerGO.SetActive(false);        
         // Time's Up!:
         timesUp = gameObject.transform.Find("Times up").gameObject;
         timesUp.SetActive(false);
+        // TextBox:
+        textBox = gameObject.transform.Find("TextBox").gameObject;
+        textBox.SetActive(false);
+        textBoxText = textBox.GetComponent<TMP_Text>();
         
-        // Start the timer:
-        //Invoke("startTimer", 1);
-        // Deny input  to player before the CV appears.
+        // Deny input  to player before the CV appears:
         playerInputAllowed = false;
 
         countdownToShowCv();
         //tests
         
-        
+        // ANIMS:
         // var myVec = Cv.transform.Find("Photo").gameObject.GetComponent<RectTransform>().anchoredPosition;
         // var myVec2 = Cv.GetComponent<RectTransform>();
         
         // Debug.Log(myVec);
         // myVec2.DOAnchorPos(new Vector2(Mathf.Abs(myVec.x), -myVec.y)*3, 3, true);
         // Cv.transform.DOScale(3, 3);
-       // Cv.transform.DOMoveX(324, 3);
+        // Cv.transform.DOMoveX(324, 3);
     }
 
     void Update()
@@ -125,6 +129,10 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    void showTextBox(){
+        textBox.SetActive(true);
+    }
+
     void theTimeIsUp(){
         if (timesUp.activeSelf){
             // Disabling visual stuff:
@@ -132,12 +140,8 @@ public class UiManager : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
-                    var myVec = Cv.transform.Find("Photo").gameObject.GetComponent<RectTransform>().anchoredPosition;
-        var myVec2 = Cv.GetComponent<RectTransform>();
-        
-        Debug.Log(myVec);
-        myVec2.DOAnchorPos(new Vector2(Mathf.Abs(myVec.x), -myVec.y)*3, 3, true);
-        Cv.transform.DOScale(3, 3);
+            showTextBox();
+
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
