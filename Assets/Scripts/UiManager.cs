@@ -174,6 +174,7 @@ public class UiManager : MonoBehaviour
             break;
         case "awnser":
             // code block
+            showCorrectIcon();
             updateTextBoxWithAwnser();
             allowPlayerClickAndShowArrow(true);
             break;
@@ -191,8 +192,10 @@ public class UiManager : MonoBehaviour
         stepNumber ++;        
     }
 
+    void showCorrectIcon(){
+        textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectIcon();
+    }
     void doTheCorrection(){
-        Debug.Log("is this ok?");
         textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectImage();
     }
     void buildUpImpactAndContinue(){

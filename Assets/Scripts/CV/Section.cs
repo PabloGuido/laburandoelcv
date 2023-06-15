@@ -18,6 +18,9 @@ public class Section : MonoBehaviour
     GameObject incorrectOption;
     GameObject border;
     RectTransform borderRT;
+    // Icons
+    GameObject iconWrong;
+    GameObject iconRight;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +37,12 @@ public class Section : MonoBehaviour
         var imageSize = correctOption.transform.Find("Image").GetComponent<RectTransform>();
         borderRT.sizeDelta = new Vector2(imageSize.sizeDelta.x, imageSize.sizeDelta.y);
         border.SetActive(false);
-        // Sets the initial colors of buttons we will need. This is used to restore a section that have been clicked:
-        initialColors = thisSection.colors;     
-        initialColors.pressedColor  = Color.red; 
-        thisSection.colors = initialColors;
+        // Icons:
+        iconWrong = border.transform.Find("IconWrong").gameObject;
+        iconRight = border.transform.Find("IconRight").gameObject;
+        deactivateIconsOnStart();
+        
+        /////// Methods to do at start: ///////
         // Check if this section is correct or not.
         disableOneOfTheOptions();
         // Add the method on click
@@ -51,6 +56,20 @@ public class Section : MonoBehaviour
         correctImage.DOColor(alphaZero, 0);
         Color alphaOne = new Color(1,1,1,1);
         correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void showCorrectIcon(){
+        if (isIncorrect){
+            iconWrong.SetActive(true);
+        }
+        else {
+            iconRight.SetActive(true);
+        }
+    }
+
+    private void deactivateIconsOnStart(){
+        iconWrong.SetActive(false);
+        iconRight.SetActive(false);
     }
 
     private void disableOneOfTheOptions(){
@@ -79,29 +98,18 @@ public class Section : MonoBehaviour
     void sectionMarkedAsIncorrect(bool trueOrNot){
         markedAsIncorrect = trueOrNot; // ← ← ← ← ← This sets if market as incorrect or not.
         if (trueOrNot){
-            //markedSectionChangeColor();
+            
             border.SetActive(true);
             borderRT.DOScale(.975f, 0.1f).SetEase(Ease.Linear).From();
             
         }
         else {
-            //restoreSectionColor();
+            
             border.SetActive(false);
             border.transform.localScale = new Vector3(1,1,1);
         }
     }
 
-    void markedSectionChangeColor(){
-        ColorBlock cb = thisSection.colors;
-        cb.normalColor = Color.red;
-        cb.selectedColor = Color.red;
-        cb.highlightedColor = Color.red;
-        
-        thisSection.colors = cb;
-    }
 
-    void restoreSectionColor(){
-        thisSection.colors = initialColors;
-    }
 
 }
