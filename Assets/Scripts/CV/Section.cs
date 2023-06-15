@@ -16,6 +16,8 @@ public class Section : MonoBehaviour
     GameObject correctOption;
     Image correctImage;
     GameObject incorrectOption;
+    GameObject border;
+    RectTransform borderRT;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,12 @@ public class Section : MonoBehaviour
         correctOption = gameObject.transform.Find("Correct Option").gameObject;
         correctImage = correctOption.transform.Find("Image").GetComponent<Image>();
         incorrectOption = gameObject.transform.Find("Incorrect Option").gameObject;
+        // Gets the border and border RectTransform and sets it's size:
+        border = gameObject.transform.Find("Border").gameObject;
+        borderRT = gameObject.transform.Find("Border").GetComponent<RectTransform>();
+        var imageSize = correctOption.transform.Find("Image").GetComponent<RectTransform>();
+        borderRT.sizeDelta = new Vector2(imageSize.sizeDelta.x, imageSize.sizeDelta.y);
+        border.SetActive(false);
         // Sets the initial colors of buttons we will need. This is used to restore a section that have been clicked:
         initialColors = thisSection.colors;     
         initialColors.pressedColor  = Color.red; 
@@ -69,12 +77,14 @@ public class Section : MonoBehaviour
     }
 
     void sectionMarkedAsIncorrect(bool trueOrNot){
-        markedAsIncorrect = trueOrNot;
+        markedAsIncorrect = trueOrNot; // ← ← ← ← ← This sets if market as incorrect or not.
         if (trueOrNot){
-            markedSectionChangeColor();
+            //markedSectionChangeColor();
+            border.SetActive(true);
         }
         else {
-            restoreSectionColor();
+            //restoreSectionColor();
+            border.SetActive(false);
         }
     }
 
