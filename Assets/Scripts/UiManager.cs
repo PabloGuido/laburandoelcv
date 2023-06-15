@@ -196,17 +196,18 @@ public class UiManager : MonoBehaviour
         textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectImage();
     }
     void buildUpImpactAndContinue(){
-        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1f/3, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
     }
     void createBuildUp(){
-        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f/3, 2).OnComplete(buildUpImpactAndContinue);
         
     }
 
-    void moveTowards(){     
+    void moveTowards(){    
+        int scaleCv = 2; 
         var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
-        Cv.transform.DOScale(3, 3);
-        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*3, 3, true).OnComplete(whatToDoNext);       
+        Cv.transform.DOScale(scaleCv, 3);
+        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*scaleCv, 3, true).OnComplete(whatToDoNext);       
         
     }
     void updateTextBoxWithAwnser(){
