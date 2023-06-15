@@ -995,7 +995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputAllowed: 1
   skipCountdown: 1
-  timer: 2
+  timer: 1
 --- !u!114 &649051877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  CvSections:
+  CvSectionsPos:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1027,7 +1027,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  test: 123123
+  step:
+  - animate
 --- !u!1 &742975943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,7 +2478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755570206
 RectTransform:
   m_ObjectHideFlags: 0

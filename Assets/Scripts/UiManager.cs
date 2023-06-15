@@ -35,9 +35,12 @@ public class UiManager : MonoBehaviour
     // TextBox:
     GameObject textBox;
     TMP_Text textBoxText;
+    GameObject textBoxArrow;
     CorrectionsTexts textsAndPos;
     int stepNumber = 0;
     int moveTowardsNumber = 0;
+
+
     private void Awake()
     {
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
@@ -68,6 +71,7 @@ public class UiManager : MonoBehaviour
         // TextBox:
         textBox = gameObject.transform.Find("TextBox").gameObject;
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
+        textBoxArrow = textBox.transform.Find("Arrow").gameObject;
         textBox.SetActive(false);
         // Texts
         textsAndPos = gameObject.GetComponent<CorrectionsTexts>();
@@ -94,7 +98,7 @@ public class UiManager : MonoBehaviour
             // Debug.Log("GC " + gameCorrectingCv);
             // Debug.Log("PC " + playerCanClick);
             if (gameCorrectingCv && playerCanClick){
-                whatToDoNext(textsAndPos.step[stepNumber]);
+                whatToDoNext();
             }
         }
     }
@@ -142,46 +146,69 @@ public class UiManager : MonoBehaviour
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    string testString = "";
-    void whatToDoNext(string doWhat){
-        testString = doWhat;
-        switch(testString) 
+    void allowPlayerClickAndShowArrow(bool trueOrFalse){
+            playerCanClick = trueOrFalse;
+            textBoxArrow.SetActive(trueOrFalse);
+    }
+    void whatToDoNext(){
+        string doWhat = textsAndPos.step[stepNumber];
+        switch(doWhat) 
         {
         case "read":
             // code block
             updateTextBox();
-            playerCanClick = true;
+            allowPlayerClickAndShowArrow(true);
             Debug.Log("READ");
             break;
         case "animate":
             // code block
-            playerCanClick = false;
+            updateTextBox();
+            allowPlayerClickAndShowArrow(false);
             moveTowards();
             break;
+        case "buildUp":
+            // code block
+            updateTextBox();
+            allowPlayerClickAndShowArrow(false);
+            createBuildUp();
+            break;
+        case "awnser":
+            // code block
+            updateTextBoxWithAwnser();
+            allowPlayerClickAndShowArrow(true);
+            break;           
         case "next":
             // code block
+            moveTowardsNumber ++;
             break;
         }
         stepNumber ++;
+        
+    }
+    void buildUpImpactAndContinue(){
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1, 0.15f).SetEase(Ease.OutBack);
+    }
+    void createBuildUp(){
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
         
     }
 
     void moveTowards(){     
         var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
         Cv.transform.DOScale(3, 3);
-        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*3, 3, true);
-        moveTowardsNumber ++;
+        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*3, 3, true).OnComplete(whatToDoNext);       
+        
     }
-
-    void updateTextBox(){
-        
+    void updateTextBoxWithAwnser(){       
+        textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+    }
+    void updateTextBox(){       
         textBoxText.text = textsAndPos.textToRender[stepNumber];
-        
     }
 
     void showTextBox(){
         textBox.SetActive(true);
-        whatToDoNext(textsAndPos.step[stepNumber]);
+        whatToDoNext();
         Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
     }
 
