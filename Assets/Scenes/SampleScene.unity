@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputAllowed: 1
-  skipCountdown: 0
+  skipCountdown: 1
   timer: 30
 --- !u!114 &649051877
 MonoBehaviour:

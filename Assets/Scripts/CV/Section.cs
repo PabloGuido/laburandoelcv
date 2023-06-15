@@ -44,7 +44,7 @@ public class Section : MonoBehaviour
         thisSection.onClick.AddListener(taskOnClick);
         
     }
-
+    
     public void showCorrectImage(){
         correctOption.SetActive(true);
         Color alphaZero = new Color(1,1,1,0);
@@ -81,10 +81,13 @@ public class Section : MonoBehaviour
         if (trueOrNot){
             //markedSectionChangeColor();
             border.SetActive(true);
+            borderRT.DOScale(.975f, 0.1f).SetEase(Ease.Linear).From();
+            
         }
         else {
             //restoreSectionColor();
             border.SetActive(false);
+            border.transform.localScale = new Vector3(1,1,1);
         }
     }
 
