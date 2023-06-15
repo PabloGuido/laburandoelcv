@@ -995,7 +995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputAllowed: 1
   skipCountdown: 1
-  timer: 1
+  timer: 2
 --- !u!114 &649051877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,6 +1019,9 @@ MonoBehaviour:
   - 
   - 
   - 
+  correctTextToRender: []
+  step:
+  - animate
   CvSectionsPos:
   - {fileID: 0}
   - {fileID: 0}
@@ -1027,8 +1030,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  step:
-  - animate
+  CvSectionsGO: []
 --- !u!1 &742975943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1672,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 122760108699352625, guid: 6f1bc21662e9a52449fd87eb64cbf8f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428831650938177832, guid: 6f1bc21662e9a52449fd87eb64cbf8f0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146630532878896035, guid: 6f1bc21662e9a52449fd87eb64cbf8f0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

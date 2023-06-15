@@ -176,17 +176,27 @@ public class UiManager : MonoBehaviour
             // code block
             updateTextBoxWithAwnser();
             allowPlayerClickAndShowArrow(true);
-            break;           
+            break;
+        case "correction":
+            // code block
+            doTheCorrection();
+            updateTextBoxWithAwnser();
+            allowPlayerClickAndShowArrow(true);
+            break;             
         case "next":
             // code block
             moveTowardsNumber ++;
             break;
         }
-        stepNumber ++;
-        
+        stepNumber ++;        
+    }
+
+    void doTheCorrection(){
+        Debug.Log("is this ok?");
+        textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectImage();
     }
     void buildUpImpactAndContinue(){
-        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1, 0.15f).SetEase(Ease.OutBack);
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
     }
     void createBuildUp(){
         textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
@@ -199,8 +209,20 @@ public class UiManager : MonoBehaviour
         CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*3, 3, true).OnComplete(whatToDoNext);       
         
     }
-    void updateTextBoxWithAwnser(){       
-        textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+    void updateTextBoxWithAwnser(){
+        // The correct awnsers.
+        if (textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect){
+            if (textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect){
+                textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+            }
+        } 
+        else if (!textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect){
+            if (!textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect){
+                textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+            }
+        }
+        // The wrong awnsers.
+        
     }
     void updateTextBox(){       
         textBoxText.text = textsAndPos.textToRender[stepNumber];

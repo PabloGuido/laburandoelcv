@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class Section : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Section : MonoBehaviour
     private ColorBlock initialColors; // This var keeps the original colors of the button, not ment to be change ever.
     // Childs
     GameObject correctOption;
+    Image correctImage;
     GameObject incorrectOption;
 
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class Section : MonoBehaviour
         thisSection = gameObject.GetComponent<Button>();
         // Gets the childs:
         correctOption = gameObject.transform.Find("Correct Option").gameObject;
+        correctImage = correctOption.transform.Find("Image").GetComponent<Image>();
         incorrectOption = gameObject.transform.Find("Incorrect Option").gameObject;
         // Sets the initial colors of buttons we will need. This is used to restore a section that have been clicked:
         initialColors = thisSection.colors;     
@@ -32,6 +35,14 @@ public class Section : MonoBehaviour
         // Add the method on click
         thisSection.onClick.AddListener(taskOnClick);
         
+    }
+
+    public void showCorrectImage(){
+        correctOption.SetActive(true);
+        Color alphaZero = new Color(1,1,1,0);
+        correctImage.DOColor(alphaZero, 0);
+        Color alphaOne = new Color(1,1,1,1);
+        correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void disableOneOfTheOptions(){
