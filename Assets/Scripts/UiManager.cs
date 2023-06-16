@@ -190,13 +190,24 @@ public class UiManager : MonoBehaviour
             doTheCorrection();
             updateTextBoxWithAwnser();
             allowPlayerClickAndShowArrow(true);
-            break;             
+            break;
+        case "settle":
+            // code block
+            hideBorderAndIcon();
+            updateTextBox();
+            allowPlayerClickAndShowArrow(true);
+            break; 
         case "next":
             // code block
             moveTowardsNumber ++;
             break;
         }
         stepNumber ++;        
+    }
+
+    void hideBorderAndIcon(){
+        deactivateIconsOnStart();
+        textsAndPos.CvSectionsGO[moveTowardsNumber].hideBorderAndSettleCorrectImage();
     }
 
     void showCorrectIcon(){

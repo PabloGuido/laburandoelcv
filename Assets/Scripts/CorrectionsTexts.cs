@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//read - animate - next - buildUp - awnser - correction
+//read - animate - next - buildUp - awnser - correction - settle
 public class CorrectionsTexts : MonoBehaviour
 {
     [HideInInspector] public string[] textToRender;
@@ -37,7 +37,7 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsPos[5] = Cv.transform.Find("Experience").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[6] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
         // Normal text:
-        step = new string[]{"read", "animate", "read", "buildUp", "awnser", "correction"};
+        step = new string[]{"read", "animate", "read", "buildUp", "awnser", "correction", "settle"};
 
         textToRender = new string[100];
         textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por la foto.";
@@ -46,6 +46,7 @@ public class CorrectionsTexts : MonoBehaviour
         textToRender[3] = "3: La foto está...";
         textToRender[4] = "4: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
         textToRender[5] = "5: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[6] = "6: ALGO MAS SOBRE LAS FOTOS.";
 
         // Correct text:
         correctTextToRender = new string[100];
@@ -56,6 +57,9 @@ public class CorrectionsTexts : MonoBehaviour
         incorrectTextToRender = new string[100];
         incorrectTextToRender[4] = "4: ¡Cuidado! La foto está muy borrosa y no la marcaste!";
         incorrectTextToRender[5] = "5: Recorá, es muy importante que en nuestra foto siempre se nos pueda ver bien.";
+
+
+
 
         // // Marked as Incorrect text:
         // markedAsIncorrectTextToRender = new string[100];

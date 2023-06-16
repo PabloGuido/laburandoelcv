@@ -49,6 +49,14 @@ public class Section : MonoBehaviour
         thisSection.onClick.AddListener(taskOnClick);
         
     }
+
+    public void hideBorderAndSettleCorrectImage(){
+        border.SetActive(false);
+        if (isIncorrect){
+            correctImage.DOKill();
+        }        
+        correctImage.color = new Color(1,1,1,1);
+    }
     
     public void showCorrectImage(){
         if (isIncorrect){
@@ -67,7 +75,7 @@ public class Section : MonoBehaviour
         whichIcon.transform.GetComponent<RectTransform>().DOScale(iconScale, tweenTime).SetEase(Ease.OutBounce).SetLoops(-1, LoopType.Yoyo).From();
 
     }
-//OnComplete(()=>leaveSubtleTweenOnIcon(IWRT));
+
     public void showCorrectIcon(){
         float iconScale = 1.25f;
         float tweenTime = 0.65f;
