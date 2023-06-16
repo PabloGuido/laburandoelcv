@@ -58,12 +58,25 @@ public class Section : MonoBehaviour
         correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
     }
 
+    private void leaveSubtleTweenOnIcon(RectTransform whichIcon){
+        float iconScale = 1.075f;
+        float tweenTime = 1.5f;
+        whichIcon.transform.GetComponent<RectTransform>().DOScale(iconScale, tweenTime).SetEase(Ease.OutBounce).SetLoops(-1, LoopType.Yoyo).From();
+
+    }
+//OnComplete(()=>leaveSubtleTweenOnIcon(IWRT));
     public void showCorrectIcon(){
+        float iconScale = 1.25f;
+        float tweenTime = 0.65f;
         if (isIncorrect){
             iconWrong.SetActive(true);
+            RectTransform IWRT = iconWrong.transform.GetComponent<RectTransform>(); // This icon RectTransform.
+            IWRT.DOScale(iconScale, tweenTime).SetEase(Ease.OutBack).SetLoops(2, LoopType.Yoyo).OnComplete(()=>leaveSubtleTweenOnIcon(IWRT));
         }
         else {
             iconRight.SetActive(true);
+            RectTransform IRRT = iconRight.transform.GetComponent<RectTransform>(); // This icon RectTransform.
+            IRRT.DOScale(iconScale, tweenTime).SetEase(Ease.OutBack).SetLoops(2, LoopType.Yoyo).OnComplete(()=>leaveSubtleTweenOnIcon(IRRT));
         }
     }
 
