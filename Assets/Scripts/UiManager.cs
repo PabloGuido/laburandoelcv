@@ -37,6 +37,9 @@ public class UiManager : MonoBehaviour
     TMP_Text textBoxText;
     GameObject textBoxArrow;
     CorrectionsTexts textsAndPos;
+    GameObject iconWrong;
+    GameObject iconRight;
+    bool playerAwnseredRight;
     int stepNumber = 0;
     int moveTowardsNumber = 0;
 
@@ -71,7 +74,10 @@ public class UiManager : MonoBehaviour
         // TextBox:
         textBox = gameObject.transform.Find("TextBox").gameObject;
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
-        textBoxArrow = textBox.transform.Find("Arrow").gameObject;
+        textBoxArrow = textBox.transform.Find("Arrow").gameObject;        
+        iconWrong = textBox.transform.Find("IconWrong").gameObject;
+        iconRight = textBox.transform.Find("IconRight").gameObject;
+        deactivateIconsOnStart();
         textBox.SetActive(false);
         // Texts
         textsAndPos = gameObject.GetComponent<CorrectionsTexts>();
@@ -174,9 +180,9 @@ public class UiManager : MonoBehaviour
             createBuildUp();
             break;
         case "awnser":
-            // code block
-            showCorrectIcon();
+            // code block            
             updateTextBoxWithAwnser();
+            showCorrectIcon();
             allowPlayerClickAndShowArrow(true);
             break;
         case "correction":
@@ -194,7 +200,16 @@ public class UiManager : MonoBehaviour
     }
 
     void showCorrectIcon(){
-        textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectIcon();
+        //textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectIcon();
+        if (iconRight.activeSelf || iconWrong.activeSelf){
+            return;
+        }
+        if (playerAwnseredRight){
+            iconRight.SetActive(true);
+        }
+        else {
+            iconWrong.SetActive(true);
+        }
     }
     void doTheCorrection(){
         textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectImage();
@@ -221,18 +236,22 @@ public class UiManager : MonoBehaviour
 
         if (sectionIsIncorrect){
             if (markedAsIncorrectByPlayer){
+                playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
             }
             else if (!markedAsIncorrectByPlayer){
+                playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
             }
         } 
         //
         else if (!sectionIsIncorrect){
             if (markedAsIncorrectByPlayer){
+                playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
             }
             else if (!markedAsIncorrectByPlayer){
+                playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
             }
         }
@@ -281,6 +300,11 @@ public class UiManager : MonoBehaviour
 
     void changeTimerText(int time){
         timerText.text = time.ToString();
+    }
+
+    private void deactivateIconsOnStart(){
+        iconWrong.SetActive(false);
+        iconRight.SetActive(false);
     }
 
 }
