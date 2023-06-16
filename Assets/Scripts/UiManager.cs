@@ -237,7 +237,7 @@ public class UiManager : MonoBehaviour
     }
 
     void moveTowards(){    
-        int scaleCv = 2; 
+        float scaleCv = textsAndPos.CvZoom[moveTowardsNumber]; 
         var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
         if (myTargetVec.x > 0){
             myTargetVec.x = -myTargetVec.x;

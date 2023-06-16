@@ -9,6 +9,7 @@ public class CorrectionsTexts : MonoBehaviour
     [HideInInspector] public string[] incorrectTextToRender;
     // [HideInInspector] public string[] markedAsIncorrectTextToRender;
     [HideInInspector] public string[] step;
+    [HideInInspector] public float[] CvZoom;
 
     [HideInInspector] public RectTransform [] CvSectionsPos;
     [HideInInspector] public Section [] CvSectionsGO;
@@ -17,6 +18,9 @@ public class CorrectionsTexts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Zooms:
+        CvZoom = new float[]{2f,1.75f,2f,1.75f,1.75f,1.75f,2f};
+        //
         CvSectionsGO = new Section[7];
         Cv = gameObject.transform.Find("CV").gameObject;
         CvSectionsGO[0] = Cv.transform.Find("Photo").gameObject.GetComponent<Section>();
