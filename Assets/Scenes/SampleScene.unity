@@ -823,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputAllowed: 1
   skipCountdown: 1
-  timer: 10
+  timer: 4
 --- !u!114 &649051877
 MonoBehaviour:
   m_ObjectHideFlags: 0

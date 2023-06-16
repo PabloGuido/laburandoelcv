@@ -149,6 +149,9 @@ public class UiManager : MonoBehaviour
     void allowPlayerClickAndShowArrow(bool trueOrFalse){
             playerCanClick = trueOrFalse;
             textBoxArrow.SetActive(trueOrFalse);
+            if (trueOrFalse){
+                textBoxArrow.GetComponent<Image>().DOFade(0,1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
+            }
     }
     void whatToDoNext(){
         string doWhat = textsAndPos.step[stepNumber];
