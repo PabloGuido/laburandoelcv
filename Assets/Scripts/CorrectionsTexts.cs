@@ -37,7 +37,7 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsPos[5] = Cv.transform.Find("Experience").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[6] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
         // Normal text:
-        step = new string[]{"read", "animate", "read", "buildUp", "awnser", "correction", "settle"};
+        step = new string[]{"read", "animate", "read", "buildUp", "awnser", "correction", "settle", "next", "next", "next", "next", "next", "next"};
 
         textToRender = new string[100];
         textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por la foto.";
@@ -47,6 +47,12 @@ public class CorrectionsTexts : MonoBehaviour
         textToRender[4] = "4: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
         textToRender[5] = "5: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
         textToRender[6] = "6: ALGO MAS SOBRE LAS FOTOS.";
+        textToRender[7] = "7: YENDO HACIA LO PROX.";
+        textToRender[8] = "8: YENDO HACIA LO PROX.";
+        textToRender[9] = "9: YENDO HACIA LO PROX.";
+        textToRender[10] = "10: YENDO HACIA LO PROX.";
+        textToRender[11] = "11: YENDO HACIA LO PROX.";
+        textToRender[12] = "12: YENDO HACIA LO PROX.";
 
         // Correct text:
         correctTextToRender = new string[100];

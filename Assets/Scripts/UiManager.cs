@@ -199,7 +199,10 @@ public class UiManager : MonoBehaviour
             break; 
         case "next":
             // code block
+            updateTextBox();
+            allowPlayerClickAndShowArrow(false);
             moveTowardsNumber ++;
+            moveTowards();
             break;
         }
         stepNumber ++;        
@@ -236,9 +239,22 @@ public class UiManager : MonoBehaviour
     void moveTowards(){    
         int scaleCv = 2; 
         var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
+        if (myTargetVec.x > 0){
+            myTargetVec.x = -myTargetVec.x;
+        }
+        else if (myTargetVec.x < 0){
+            myTargetVec.x = Mathf.Abs(myTargetVec.x);
+        }
+
+        if (myTargetVec.y > 0){
+            myTargetVec.y = -myTargetVec.y;
+        }
+        else if (myTargetVec.y < 0){
+            myTargetVec.y = Mathf.Abs(myTargetVec.y);
+        }
+
         Cv.transform.DOScale(scaleCv, 3);
-        CvRT.DOAnchorPos(new Vector2(Mathf.Abs(myTargetVec.x), -myTargetVec.y)*scaleCv, 3, true).OnComplete(whatToDoNext);       
-        
+        CvRT.DOAnchorPos(new Vector2(myTargetVec.x, myTargetVec.y)*scaleCv, 3, true).OnComplete(whatToDoNext);      
     }
     void updateTextBoxWithAwnser(){
         // The correct awnsers.
