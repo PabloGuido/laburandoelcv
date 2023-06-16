@@ -51,11 +51,14 @@ public class Section : MonoBehaviour
     }
     
     public void showCorrectImage(){
-        correctOption.SetActive(true);
-        Color alphaZero = new Color(1,1,1,0);
-        correctImage.DOColor(alphaZero, 0);
-        Color alphaOne = new Color(1,1,1,1);
-        correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
+        if (isIncorrect){
+            correctOption.SetActive(true);
+            Color alphaZero = new Color(1,1,1,0);
+            correctImage.DOColor(alphaZero, 0);
+            Color alphaOne = new Color(1,1,1,1);
+            correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
+        }
+
     }
 
     private void leaveSubtleTweenOnIcon(RectTransform whichIcon){
