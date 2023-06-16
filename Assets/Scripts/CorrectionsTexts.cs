@@ -6,6 +6,8 @@ public class CorrectionsTexts : MonoBehaviour
 {
     [HideInInspector] public string[] textToRender;
     [HideInInspector] public string[] correctTextToRender;
+    [HideInInspector] public string[] incorrectTextToRender;
+    // [HideInInspector] public string[] markedAsIncorrectTextToRender;
     [HideInInspector] public string[] step;
 
     [HideInInspector] public RectTransform [] CvSectionsPos;
@@ -36,6 +38,7 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsPos[6] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
         // Normal text:
         step = new string[]{"read", "animate", "read", "buildUp", "awnser", "correction"};
+
         textToRender = new string[100];
         textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por la foto.";
         textToRender[1] = "1: Muy bien, corrijamos el cv. Empecemos por la foto.";
@@ -48,6 +51,16 @@ public class CorrectionsTexts : MonoBehaviour
         correctTextToRender = new string[100];
         correctTextToRender[4] = "4: ¡La foto está muy borrosa! Muy bien por darte cuenta.";
         correctTextToRender[5] = "5: Es muy importante que en nuestra foto siempre se nos pueda ver bien.";
+
+        // Not marked as Incorrect text:
+        incorrectTextToRender = new string[100];
+        incorrectTextToRender[4] = "4: ¡Cuidado! La foto está muy borrosa y no la marcaste!";
+        incorrectTextToRender[5] = "5: Recorá, es muy importante que en nuestra foto siempre se nos pueda ver bien.";
+
+        // // Marked as Incorrect text:
+        // markedAsIncorrectTextToRender = new string[100];
+        // markedAsIncorrectTextToRender[4] = "4: ¡Cuidado! La foto está muy borrosa y no la marcaste!";
+        // markedAsIncorrectTextToRender[5] = "5: Recorá, es muy importante que en nuestra foto siempre se nos pueda ver bien.";
     }
 
 

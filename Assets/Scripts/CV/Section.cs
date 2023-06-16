@@ -68,6 +68,11 @@ public class Section : MonoBehaviour
     public void showCorrectIcon(){
         float iconScale = 1.25f;
         float tweenTime = 0.65f;
+        if (!markedAsIncorrect){
+            border.GetComponent<Image>().color = new Color(255,255,255,0);  
+            border.SetActive(true);          
+        }
+
         if (isIncorrect){
             iconWrong.SetActive(true);
             RectTransform IWRT = iconWrong.transform.GetComponent<RectTransform>(); // This icon RectTransform.

@@ -216,17 +216,26 @@ public class UiManager : MonoBehaviour
     }
     void updateTextBoxWithAwnser(){
         // The correct awnsers.
-        if (textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect){
-            if (textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect){
+        bool sectionIsIncorrect = textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect;
+        bool markedAsIncorrectByPlayer = textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect;
+
+        if (sectionIsIncorrect){
+            if (markedAsIncorrectByPlayer){
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
             }
+            else if (!markedAsIncorrectByPlayer){
+                textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+            }
         } 
-        else if (!textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect){
-            if (!textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect){
+        //
+        else if (!sectionIsIncorrect){
+            if (markedAsIncorrectByPlayer){
+                textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+            }
+            else if (!markedAsIncorrectByPlayer){
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
             }
         }
-        // The wrong awnsers.
         
     }
     void updateTextBox(){       
