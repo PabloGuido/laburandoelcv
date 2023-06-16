@@ -150,7 +150,7 @@ public class UiManager : MonoBehaviour
             playerCanClick = trueOrFalse;
             textBoxArrow.SetActive(trueOrFalse);
             if (trueOrFalse){
-                textBoxArrow.GetComponent<Image>().DOFade(0,1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
+                //textBoxArrow.GetComponent<Image>().DOFade(0,1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
             }
     }
     void whatToDoNext(){
