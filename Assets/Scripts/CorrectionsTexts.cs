@@ -48,9 +48,12 @@ public class CorrectionsTexts : MonoBehaviour
 
         textToRender = new string[100];
         // Photo:
-        textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por la foto.";
+        //textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por la foto.";
+        textToRender[0] = "Esta es la mayor cantidad de texto que entra en el cuadro. Esta es la mayor cantidad de texto que entra en el cuadro.";
         textToRender[1] = "1: Muy bien, corrijamos el cv. Empecemos por la foto.";
-        textToRender[2] = "2: Veamos..";
+        
+        //textToRender[2] = "2: Veamos..";
+        textToRender[2] = "Esta es la mayor cantidad de texto que entra en el cuadro. Esta es la mayor cantidad de texto que entra en el cuadro.";
         textToRender[3] = "3: La foto está...";
         textToRender[4] = "4: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
         textToRender[5] = "5: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
