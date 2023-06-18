@@ -47,8 +47,12 @@ public class Section : MonoBehaviour
         disableOneOfTheOptions();
         // Add the method on click
         thisSection.onClick.AddListener(taskOnClick);
+        //
+        
         
     }
+
+
 
     public void hideBorderAndSettleCorrectImage(){
         border.SetActive(false);
