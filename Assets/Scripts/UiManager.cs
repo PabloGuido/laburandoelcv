@@ -42,7 +42,8 @@ public class UiManager : MonoBehaviour
     bool playerAwnseredRight;
     int stepNumber = 0;
     int moveTowardsNumber = 0;
-
+    // Canvas Sort Order:
+    [SerializeField] private Canvas thisCanvas;
 
     private void Awake()
     {
@@ -313,7 +314,7 @@ public class UiManager : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
-
+            thisCanvas.sortingOrder = 1;
             showCorrectionImg(); 
 
         }
