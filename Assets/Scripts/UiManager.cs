@@ -22,6 +22,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private bool skipCountdown;
     private int countDownToCv = 5;
     private string[] countDownTexts = {"", "¡Ahora!","1", "2", "3", "¿Listo?"};
+    [SerializeField]  private Sprite[] countDownImg = new Sprite[5];
     TMP_Text countDownTmp;
     GameObject countDownTmpGO; // This is for disabling the 'node';
     // Timer:
@@ -45,10 +46,15 @@ public class UiManager : MonoBehaviour
     // Canvas Sort Order:
     [SerializeField] private Canvas thisCanvas;
 
+    // test build
+    public Button startGame;
+
     private void Awake()
     {
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
         Instance = this;
+        Screen.SetResolution (Screen.currentResolution.width, Screen.currentResolution.height, true);
+
     }
     //Start is called before the first frame update
     void Start()
@@ -62,9 +68,10 @@ public class UiManager : MonoBehaviour
         countDownTmpGO = gameObject.transform.Find("Countdown").gameObject;
         //Timer Time:
         //timer = 60; // In case of need or in the final build put set timer here. Maybe we can add a setting for this, at least yes for testing.
-        timerText = gameObject.transform.Find("Timer").gameObject.GetComponent<TMP_Text>();
+        
+        timerGO = gameObject.transform.Find("Timer Img").gameObject;
+        timerText = timerGO.transform.Find("Timer Txt").gameObject.GetComponent<TMP_Text>();
         changeTimerText(timer); // Set the timer text to then be disabled and enabled.
-        timerGO = gameObject.transform.Find("Timer").gameObject;
         timerGO.SetActive(false);        
         // Time's Up!:
         timesUp = gameObject.transform.Find("Times up").gameObject;
@@ -87,7 +94,9 @@ public class UiManager : MonoBehaviour
         // Deny input  to player before the CV appears:
         playerInputAllowed = false;
 
-        countdownToShowCv();
+        //
+        startGame.onClick.AddListener(countdownToShowCv);
+        //countdownToShowCv();
 
     }
 
@@ -123,6 +132,7 @@ public class UiManager : MonoBehaviour
             startCorrectingCv();
             return;
         }
+        
         countDownTmp.text = countDownTexts[countDownToCv];
         countDownToCv --;
         if (countDownToCv == 0){

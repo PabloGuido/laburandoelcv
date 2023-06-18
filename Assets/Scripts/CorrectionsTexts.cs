@@ -18,7 +18,7 @@ public class CorrectionsTexts : MonoBehaviour
     void Start()
     {
         // Zooms:
-        CvZoom = new float[]{2f,1.75f,2f,1.75f,1.75f,1.75f,2f};
+        CvZoom = new float[]{2f,1.75f,1.65f,1.65f,1.5f,1.75f,2f};
         //
         CvSectionsGO = new Section[6];
         Cv = gameObject.transform.Find("CV").gameObject;
