@@ -194,7 +194,7 @@ public class UiManager : MonoBehaviour
         case "settle":
             // code block
             hideBorderAndIcon();
-            updateTextBox();
+            updateTextBoxWithAwnser();
             allowPlayerClickAndShowArrow(true);
             break; 
         case "next":
