@@ -125,7 +125,7 @@ public class UiManager : MonoBehaviour
 
     void cueInTheCvAnimation(){
         Cv.SetActive(true);
-        CvRT.DOMoveX(540,1f).SetEase(Ease.InOutElastic).OnComplete(changeThisCanvasSortOrderToTop);
+        CvRT.DOMoveX(540,1.15f).SetEase(Ease.InOutElastic).OnComplete(changeThisCanvasSortOrderToTop);
     }
 
     void startCorrectingCv(){
@@ -151,7 +151,7 @@ public class UiManager : MonoBehaviour
         }
         else if (countDownToCv == 4){
             startGameGO.SetActive(false);
-            countDownImg.DOFade(0f, 1.5f).From();
+            countDownImg.DOFade(0f, 1.5f).From(); // Fades in "LISTO?";
             Invoke("countdownToShowCv", 3);
             return;
         }
