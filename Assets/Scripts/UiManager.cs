@@ -21,10 +21,9 @@ public class UiManager : MonoBehaviour
     RectTransform CvRT;
     [SerializeField] private bool skipCountdown;
     private int countDownToCv = 5;
-    private string[] countDownTexts = {"", "¡Ahora!","1", "2", "3", "¿Listo?"};
-    [SerializeField]  private Sprite[] countDownImg = new Sprite[5];
-    TMP_Text countDownTmp;
-    GameObject countDownTmpGO; // This is for disabling the 'node';
+    [SerializeField]  private Sprite[] countDownImgArray = new Sprite[6];
+    Image countDownImg;
+    GameObject countDownGO; // This is for disabling the 'node';
     // Timer:
     [SerializeField] private int timer;
     TMP_Text timerText;
@@ -48,6 +47,7 @@ public class UiManager : MonoBehaviour
 
     // test build
     public Button startGame;
+    public GameObject startGameGO;
 
     private void Awake()
     {
@@ -63,9 +63,9 @@ public class UiManager : MonoBehaviour
         // Show CV and countdown:
         Cv = gameObject.transform.Find("CV").gameObject;
         Cv.SetActive(false);
-        CvRT = Cv.GetComponent<RectTransform>();
-        countDownTmp = gameObject.transform.Find("Countdown").gameObject.GetComponent<TMP_Text>();
-        countDownTmpGO = gameObject.transform.Find("Countdown").gameObject;
+        CvRT = Cv.GetComponent<RectTransform>();        
+        countDownGO = gameObject.transform.Find("Countdown").gameObject;
+        countDownImg = countDownGO.transform.GetComponent<Image>();
         //Timer Time:
         //timer = 60; // In case of need or in the final build put set timer here. Maybe we can add a setting for this, at least yes for testing.
         
@@ -119,9 +119,17 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    void startCorrectingCv(){
-        countDownTmpGO.SetActive(false);
+    void changeThisCanvasSortOrderToTop(){
+        thisCanvas.sortingOrder = 10;
+    }
+
+    void cueInTheCvAnimation(){
         Cv.SetActive(true);
+        CvRT.DOMoveX(540,1f).SetEase(Ease.InOutElastic).OnComplete(changeThisCanvasSortOrderToTop);
+    }
+
+    void startCorrectingCv(){
+        countDownGO.SetActive(false);
         timerGO.SetActive(true);
         playerInputAllowed = true;
         Invoke("startTimer", 1);
@@ -133,13 +141,22 @@ public class UiManager : MonoBehaviour
             return;
         }
         
-        countDownTmp.text = countDownTexts[countDownToCv];
+        countDownImg.sprite = countDownImgArray[countDownToCv];
         countDownToCv --;
         if (countDownToCv == 0){
+            countDownGO.transform.GetComponent<RectTransform>().DOScale(0.45f, 0.15f).From();
             Invoke("startCorrectingCv", 1);
+            cueInTheCvAnimation();
+            return;
+        }
+        else if (countDownToCv == 4){
+            startGameGO.SetActive(false);
+            countDownImg.DOFade(0f, 1.5f).From();
+            Invoke("countdownToShowCv", 3);
             return;
         }
         else {
+            countDownGO.transform.GetComponent<RectTransform>().DOScale(0.45f, 0.15f).From();
             Invoke("countdownToShowCv", 1);
         }        
     }
