@@ -102,32 +102,25 @@ public class UiManager : MonoBehaviour
 
     void Update()
     {
-        // Track a single touch as a direction control.
-        if (Input.touchCount > 0)
-        {         
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    //Debug.Log("Working touch");
-                    // Do stuff;
-
-                    return;
-                }
-        }
-        
-        //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
-        //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
-        // Maybe set a setting to let us check for the type of input for the testing with the real deal monitor.
-        //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
-        //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
-
         // This input starts running after the times is up and while the game is correcting the CV.
-        if (Input.GetMouseButtonDown(0)){
-            // Debug.Log("GC " + gameCorrectingCv);
-            // Debug.Log("PC " + playerCanClick);
-            if (gameCorrectingCv && playerCanClick){
+        if (gameCorrectingCv && playerCanClick){
+            // Track a single touch as a direction control.
+            if (Input.touchCount > 0)
+            {         
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        Debug.Log("Working touch");
+                        
+                        whatToDoNext();
+                        return;
+                    }
+            }
+            else if (Input.GetMouseButtonDown(0)){ 
+                Debug.Log("Working Click");
                 whatToDoNext();
+                return;
             }
         }
     }
