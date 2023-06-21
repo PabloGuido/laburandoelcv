@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Button buttonTest;
+    // Allow click player to advance scene:
     private bool playerCanClick;
+    // Scenes:
+    private string[] scenes = {"MainMenu", "HowToPlay", "GameScene"};
+    private int sceneCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +19,8 @@ public class MainMenu : MonoBehaviour
 
     void nextScene(){
         playerCanClick = false;
-        SceneManager.LoadScene("SampleScene");
+        sceneCount ++;        
+        SceneManager.LoadScene(scenes[sceneCount]);
     }
     void Update()
     {
