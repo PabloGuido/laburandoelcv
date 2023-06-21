@@ -102,6 +102,19 @@ public class UiManager : MonoBehaviour
 
     void Update()
     {
+        // Track a single touch as a direction control.
+        if (Input.touchCount > 0)
+        {         
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    //Debug.Log("Working touch");
+                    // Do stuff;
+
+                    return;
+                }
+        }
         
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
         //////// VER INPUT GET TOCUCH PARA LA PANTALLA ////////
