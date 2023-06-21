@@ -49,11 +49,15 @@ public class UiManager : MonoBehaviour
     public Button startGame;
     public GameObject startGameGO;
 
+    private float middleOfScreen;
+
     private void Awake()
     {
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
         Instance = this;
-        Screen.SetResolution (Screen.currentResolution.width, Screen.currentResolution.height, true);
+        //Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+        Debug.Log(gameObject.GetComponent<RectTransform>().anchoredPosition.x);
+        middleOfScreen = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
 
     }
     //Start is called before the first frame update
@@ -131,7 +135,8 @@ public class UiManager : MonoBehaviour
 
     void cueInTheCvAnimation(){
         Cv.SetActive(true);
-        CvRT.DOMoveX(540,1.15f).SetEase(Ease.InOutElastic).OnComplete(changeThisCanvasSortOrderToTop);
+        CvRT.DOMoveX(middleOfScreen,1.15f).SetEase(Ease.InOutElastic).OnComplete(changeThisCanvasSortOrderToTop);
+        //CvRT.DOMoveX(720,1.15f).SetEase(Ease.Linear).OnComplete(changeThisCanvasSortOrderToTop);
     }
 
     void startCorrectingCv(){
