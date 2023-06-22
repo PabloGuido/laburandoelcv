@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class HowToPlay : MonoBehaviour
 {
     [SerializeField] private GameObject cameraToDisable;
+    [SerializeField] private bool DisableCamera;
     //
     private bool playerCanClick = false;
     //
@@ -36,7 +38,8 @@ public class HowToPlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //cameraToDisable.SetActive(false);
+        if (DisableCamera) cameraToDisable.SetActive(false);
+        
         //
         texts[0] = "¡Hola! Bienvenido. Tocá la pantalla para continuar.";
         texts[1] = "Te vamos a mostrar un currículum que tiene algunas fallas.";
@@ -128,7 +131,8 @@ public class HowToPlay : MonoBehaviour
     }
     private void nextScene(){
         playerCanClick = false;
-        BackGround.Instance.askToGoNextScene();
+        int sceneNumber = SceneManager.GetActiveScene().buildIndex;
+        BackGround.Instance.askToGoNextScene(sceneNumber);
     }
 
     private void killAllTweens(){
@@ -183,7 +187,7 @@ public class HowToPlay : MonoBehaviour
     }
 
     private void showCv(){
-        cvImg.DOFade(1, 3f);
+        cvImg.DOFade(1, 1.5f);
     }
 
 

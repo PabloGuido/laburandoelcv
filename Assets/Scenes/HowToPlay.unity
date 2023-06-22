@@ -317,7 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2777f880edbf9a43aa964bc983687a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraToDisable: {fileID: 0}
+  cameraToDisable: {fileID: 757610197}
+  DisableCamera: 1
 --- !u!1 &752888634
 GameObject:
   m_ObjectHideFlags: 0

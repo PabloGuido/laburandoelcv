@@ -40,7 +40,8 @@ public class MainMenu : MonoBehaviour
 
     private void nextScene(){
         playerCanClick = false;
-        BackGround.Instance.askToGoNextScene();
+        int sceneNumber = SceneManager.GetActiveScene().buildIndex;
+        BackGround.Instance.askToGoNextScene(sceneNumber);
     }
 
 }
