@@ -8,20 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     // Allow click player to advance scene:
     private bool playerCanClick;
-    // Scenes:
-    private string[] scenes = {"MainMenu", "HowToPlay", "GameScene"};
-    private int sceneCount = 0;
     // Start is called before the first frame update
     void Start()
     {
         playerCanClick = true;
     }
 
-    void nextScene(){
-        playerCanClick = false;
-        sceneCount ++;        
-        SceneManager.LoadScene(scenes[sceneCount]);
-    }
     void Update()
     {
         // This input starts running after the times is up and while the game is correcting the CV.
@@ -45,4 +37,10 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
+
+    private void nextScene(){
+        playerCanClick = false;
+        BackGround.Instance.askToGoNextScene();
+    }
+
 }

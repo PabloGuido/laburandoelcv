@@ -7,13 +7,18 @@ using DG.Tweening;
 
 public class HowToPlay : MonoBehaviour
 {
-    private bool playerCanClick;
+    [SerializeField] private GameObject cameraToDisable;
+    //
+    private bool playerCanClick = false;
     //
     GameObject cv;
     Image cvImg;
-    Image border;
-    Image hand;
-    Image click;
+    GameObject border;
+    GameObject hand;
+    RectTransform handRT;
+    GameObject click;
+    RectTransform clickRT;
+    Image clickImg;
     //
     GameObject textBox;
     Image textBoxImg;
@@ -31,8 +36,10 @@ public class HowToPlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //cameraToDisable.SetActive(false);
+        //
         texts[0] = "¡Hola! Bienvenido. Tocá la pantalla para continuar.";
-        texts[1] = "Te vamos a motrar un currículum que tiene algunas fallas.";
+        texts[1] = "Te vamos a mostrar un currículum que tiene algunas fallas.";
         texts[2] = "Cuando encuentres una tocá sobre ella.";
         texts[3] = "Y una vez que termine el tiempo vamos a ver que tal lo hicimos.";
         //
@@ -48,25 +55,127 @@ public class HowToPlay : MonoBehaviour
 
         arrow = textBox.transform.Find("Arrow").gameObject;
         arrow.SetActive(false);
+
         //
 
         cv = gameObject.transform.Find("CV").gameObject;
         cvImg = cv.transform.GetComponent<Image>();
         cvImg.color = new Color(1,1,1,0);
 
-        showShowTextBox();
-        //showCv();
+        hand = cv.transform.Find("Hand").gameObject;
+        handRT = hand.transform.GetComponent<RectTransform>();
+        hand.SetActive(false);
+        click = hand.transform.Find("Click").gameObject;
+        click.transform.GetComponent<Image>().color = new Color(1,1,1,0);
+        click.SetActive(false);
+        clickRT = click.transform.GetComponent<RectTransform>();
+        clickImg = click.transform.GetComponent<Image>();
+        
+        border = cv.transform.Find("Border").gameObject;
+
+        showShowTextBox();        
     }
 
-    private void showText(){
-        textBoxText.text = texts[textsCount];
+    void Update()
+    {
+        // This input starts running after the times is up and while the game is correcting the CV.
+        if (playerCanClick){
+            // Track a single touch as a direction control.
+            if (Input.touchCount > 0)
+            {         
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        showText();
+                        Debug.Log("Working touch");
+                        return;
+                    }
+            }
+            else if (Input.GetMouseButtonDown(0)){ 
+                showText();
+                Debug.Log("Working Click");
+                return;
+            }
+        }
     }
+
+
+    private void showText(){
+        switch(textsCount){
+            case 0:
+                textBoxText.text = texts[textsCount];
+            break;
+            case 1:
+                textBoxText.text = texts[textsCount];
+                showCv();
+            break;
+            case 2:
+                textBoxText.text = texts[textsCount];
+                showHandAndClick();
+            break;
+            case 3:
+                textBoxText.text = texts[textsCount];
+                killAllTweens();
+            break;
+            case 4:
+                nextScene();
+                
+            break;
+        }
+
+        textsCount ++;
+    }
+    private void nextScene(){
+        playerCanClick = false;
+        BackGround.Instance.askToGoNextScene();
+    }
+
+    private void killAllTweens(){
+        if (DOTween.IsTweening(handRT)){
+            handRT.DOKill();            
+        }
+        if (DOTween.IsTweening(clickImg)){
+            clickImg.DOKill();            
+        }
+        click.SetActive(false);
+        hand.SetActive(false);
+        border.SetActive(true);
+    }
+
+    private void restoreHandScale(){
+        handRT.DOScale(2f, 0.25f).OnComplete(clickAnimation);
+    }
+
+    private void showClick(){
+        click.SetActive(true);
+        clickImg.DOFade(1, 0.5f).From().OnComplete(restoreHandScale);
+        if (border.activeSelf){
+            border.SetActive(false);
+        }
+        else{
+            border.SetActive(true);
+        }
+        
+    }
+
+    private void clickAnimation(){
+        handRT.DOScale(1.5f, 0.5f).OnComplete(showClick);
+    }
+
+    private void showHandAndClick(){
+        hand.SetActive(true);
+        hand.transform.GetComponent<Image>().DOFade(0f, 1f).From().OnComplete(clickAnimation);
+    }
+
+
 
     private void paintTextBox(){
         mask.SetActive(true);
         textBoxImg.color = textBoxColor;
         showText();
         arrow.SetActive(true);
+        playerCanClick = true;
     }
 
     private void showShowTextBox(){
@@ -78,9 +187,4 @@ public class HowToPlay : MonoBehaviour
     }
 
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 }
