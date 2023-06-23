@@ -17,7 +17,7 @@ public class DelKey : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thisKey = gameObject.transform.Find("Text (TMP)").transform.GetComponent<TMP_Text>();
+        thisKey = gameObject.transform.Find("Text (TMP)").GetComponent<TMP_Text>();
         key = thisKey.text;
 
         thisButton = gameObject.transform.GetComponent<Button>();

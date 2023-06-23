@@ -13,6 +13,7 @@ public class Key : MonoBehaviour
     //
     private Button thisButton;
     //
+    [SerializeField] private GameObject dropDown;
     [SerializeField] private TMP_InputField mailField;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,10 @@ public class Key : MonoBehaviour
     }
 
     void addKeyToField(){
-        
+        if (dropDown.activeSelf){
+            
+        }
+        dropDown.SetActive(false);
         mailField.text = mailField.text + key;
         mailField.caretPosition = mailField.text.Length; 
         mailField.Select();

@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b73c94fa3841eb4a95b2c31000cdd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropDown: {fileID: 28134537327422079, guid: fa6bcf948aa35974d89fdcb9cd6e500e, type: 3}
   mailField: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
 --- !u!1 &1989243800543634204
 GameObject:
