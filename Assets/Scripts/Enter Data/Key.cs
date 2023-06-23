@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+
 
 public class Key : MonoBehaviour
 {
@@ -26,14 +26,17 @@ public class Key : MonoBehaviour
     }
 
     void addKeyToField(){
-        if (dropDown.activeSelf){
-            
-        }
-        dropDown.SetActive(false);
-        mailField.text = mailField.text + key;
-        mailField.caretPosition = mailField.text.Length; 
-        mailField.Select();
+        if (EnterData.Instance.playerCanClick){
+
         
+            if (dropDown.activeSelf){
+                dropDown.SetActive(false);
+            }
+
+            mailField.text = mailField.text + key;
+            mailField.caretPosition = mailField.text.Length; 
+            mailField.Select();
+        }
         //Debug.Log(key);
         //Debug.Log(mailField.caretPosition);
     }

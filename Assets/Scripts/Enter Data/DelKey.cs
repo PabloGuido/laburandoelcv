@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+
 
 public class DelKey : MonoBehaviour
 {
@@ -25,14 +25,16 @@ public class DelKey : MonoBehaviour
     }
 
     void removeKeyToField(){
-        if (mailField.text.Length > 0){
-            mailField.text = mailField.text.Remove(mailField.text.Length-1,1);
-            mailField.caretPosition = mailField.text.Length; 
-            mailField.Select();  
-            if (mailField.text.Length <= 15){
-                mailField.selectionFocusPosition = 0;
-            }    
-        }  
+        if (EnterData.Instance.playerCanClick){
+            if (mailField.text.Length > 0){
+                mailField.text = mailField.text.Remove(mailField.text.Length-1,1);
+                mailField.caretPosition = mailField.text.Length; 
+                mailField.Select();  
+                if (mailField.text.Length <= 15){
+                    mailField.selectionFocusPosition = 0;
+                }    
+            }  
+        }
         //Debug.Log(mailField.text.Length);
     }
 

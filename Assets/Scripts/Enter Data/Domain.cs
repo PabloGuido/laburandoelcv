@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+
 
 public class Domain : MonoBehaviour
 {
@@ -20,11 +20,13 @@ public class Domain : MonoBehaviour
     }
 
     private void openOrcloseDropDown(){
-        if (!dropDown.activeSelf){
-            dropDown.SetActive(true);
-        }
-        else {
-            dropDown.SetActive(false);
+        if (EnterData.Instance.playerCanClick){
+            if (!dropDown.activeSelf){
+                dropDown.SetActive(true);
+            }
+            else {
+                dropDown.SetActive(false);
+            }
         }
     }
 

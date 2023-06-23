@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+
 
 public class DomainButton : MonoBehaviour
 {
@@ -24,8 +24,10 @@ public class DomainButton : MonoBehaviour
     }
 
     private void selectDomain(){
-        dropDown.SetActive(false);
-        dropDownButtonText.text = domainText;
+        if (EnterData.Instance.playerCanClick){
+            dropDown.SetActive(false);
+            dropDownButtonText.text = domainText;
+        }
     }
 
 }

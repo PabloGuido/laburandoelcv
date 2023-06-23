@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\UiManager.cs" />
      <Compile Include="Assets\Scripts\Enter Data\Domain.cs" />
      <Compile Include="Assets\Scripts\Enter Data\DomainButton.cs" />
+     <Compile Include="Assets\Scripts\Enter Data\EnterData.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
