@@ -32,10 +32,10 @@ public class EnterData : MonoBehaviour
         if (playerCanClick){
             if (mailField.text.Length <= 1 || domainField.text.Length <= 0 ){
                 
-                //Debug.Log("Enter mail.");
+                Debug.Log("Enter mail.");
             }
             else {
-                
+                SaveMails.Instance.addMailToList(mailField.text + "@" + domainField.text);
                 //Debug.Log(mailField.text + "@" + domainField.text);
             }
         }

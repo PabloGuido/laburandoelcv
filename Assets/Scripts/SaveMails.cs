@@ -5,8 +5,15 @@ using System.IO;
 
 public class SaveMails : MonoBehaviour
 {
+    public static SaveMails Instance;
+    //
     private string mailFolderDirectory;
     private string txtFileDirectory;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +29,12 @@ public class SaveMails : MonoBehaviour
             Debug.Log("No need to create directory and file.");
         }
 
-        Invoke("addMailToList", 5);
+        //Invoke("addMailToList", 5);
 
         
     }
 
-    void addMailToList(){
-        string testNumber = Random.Range(1000, 9999).ToString();
-        Debug.Log(testNumber);
-        File.AppendAllText(txtFileDirectory, testNumber + "\n");
+    public void addMailToList(string mailDir){
+        File.AppendAllText(txtFileDirectory, mailDir + "\n");
     }
 }
