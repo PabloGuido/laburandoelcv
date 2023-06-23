@@ -18,6 +18,7 @@ public class HowToPlay : MonoBehaviour
     GameObject border;
     GameObject hand;
     RectTransform handRT;
+    Image handImg;
     GameObject click;
     RectTransform clickRT;
     Image clickImg;
@@ -67,6 +68,7 @@ public class HowToPlay : MonoBehaviour
 
         hand = cv.transform.Find("Hand").gameObject;
         handRT = hand.transform.GetComponent<RectTransform>();
+        handImg = hand.transform.GetComponent<Image>();
         hand.SetActive(false);
         click = hand.transform.Find("Click").gameObject;
         click.transform.GetComponent<Image>().color = new Color(1,1,1,0);
@@ -139,8 +141,14 @@ public class HowToPlay : MonoBehaviour
         if (DOTween.IsTweening(handRT)){
             handRT.DOKill();            
         }
+        if (DOTween.IsTweening(handImg)){
+            handImg.DOKill();            
+        }
         if (DOTween.IsTweening(clickImg)){
             clickImg.DOKill();            
+        }
+        if (DOTween.IsTweening(cvImg)){
+            cvImg.DOKill();            
         }
         click.SetActive(false);
         hand.SetActive(false);
@@ -169,7 +177,7 @@ public class HowToPlay : MonoBehaviour
 
     private void showHandAndClick(){
         hand.SetActive(true);
-        hand.transform.GetComponent<Image>().DOFade(0f, 1f).From().OnComplete(clickAnimation);
+        handImg.DOFade(0f, 1f).From().OnComplete(clickAnimation);
     }
 
 
@@ -186,9 +194,18 @@ public class HowToPlay : MonoBehaviour
         textBoxImg.DOFade(1, 1.5f).OnComplete(paintTextBox);
     }
 
-    private void showCv(){
-        cvImg.DOFade(1, 1.5f);
+    private void restoreClickAndArrow(){
+        playerCanClick = true;
+        arrow.SetActive(true);
     }
+
+    private void showCv(){
+        playerCanClick = false;
+        arrow.SetActive(false);
+        cvImg.DOFade(1, 1.5f).OnComplete(restoreClickAndArrow);
+    }
+
+    
 
 
 }
