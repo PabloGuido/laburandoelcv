@@ -25,13 +25,13 @@ public class Key : MonoBehaviour
     }
 
     void addKeyToField(){
-        Debug.Log(key);
+        
         mailField.text = mailField.text + key;
         mailField.caretPosition = mailField.text.Length; 
         mailField.Select();
         
-        
-        Debug.Log(mailField.caretPosition);
+        //Debug.Log(key);
+        //Debug.Log(mailField.caretPosition);
     }
 
 }
