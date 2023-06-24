@@ -39,7 +39,6 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsPos[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[2] = Cv.transform.Find("Education").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[3] = Cv.transform.Find("Experience").gameObject.GetComponent<RectTransform>();
-        //CvSectionsPos[3].anchoredPosition = CvSectionsPos[3].anchoredPosition + new Vector2(0, -500);
         CvSectionsPos[4] = Cv.transform.Find("Abilities").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[5] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
         //
@@ -49,7 +48,6 @@ public class CorrectionsTexts : MonoBehaviour
         SectionOffset[1] = Cv.transform.Find("Presentation").Find("Offset").GetComponent<Transform>();
         SectionOffset[2] = Cv.transform.Find("Education").Find("Offset").GetComponent<Transform>();
         SectionOffset[3] = Cv.transform.Find("Experience").Find("Offset").GetComponent<Transform>();
-        //CvSectionsPos[3].anchoredPosition = CvSectionsPos[3].anchoredPosition + new Vector2(0, -500);
         SectionOffset[4] = Cv.transform.Find("Abilities").Find("Offset").GetComponent<Transform>();
         SectionOffset[5] = Cv.transform.Find("Contact").Find("Offset").GetComponent<Transform>();
         //Debug.Log(SectionOffset[4]);
@@ -60,8 +58,9 @@ public class CorrectionsTexts : MonoBehaviour
         "buildUp", "awnser", "correction", "settle", "next", // Education
         "buildUp", "awnser", "correction", "settle", "next", // Experience
         "buildUp", "awnser", "correction", "settle", "next", // Abilities
-        "buildUp", "awnser", "correction", "settle", "next", // Contact
-        
+        "buildUp", "awnser", "correction", "settle", // Contact
+        "endZoom","read","read","read","read","read",
+        "cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene",
         };
 
         textToRender = new string[100];
@@ -98,11 +97,22 @@ public class CorrectionsTexts : MonoBehaviour
         textToRender[25] = "25: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
         textToRender[26] = "26: Terminemos con la info de contacto.";
         // Contact:
-        textToRender[22] = "22: A ver que pasa acá...";
-        textToRender[23] = "23: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[24] = "24: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[25] = "25: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[26] = "26: END THIS GAME.";
+        textToRender[27] = "27: Esta info de contacto está...";
+        textToRender[28] = "28: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[29] = "29: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[30] = "30: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[31] = "31: Y con esto vimos todo el CV!";
+        // End game:
+        textToRender[32] = "32: Dale una última leída y fijate como quedó.";
+        textToRender[33] = "33: Recordá siempre revisar muy bien tu CV.";
+        textToRender[34] = "34: Pedí a tus conocidos y amuigos que lo revisen y te den una devolución sobre el mismo también.";
+        textToRender[35] = "35: Otro par de ojos nunca está de mas!";
+        textToRender[36] = "36: Con esto llegamos al final. Espero que alguno de estos consejos te puedan servir :D";
+        textToRender[37] = "37: Gracias por jugar!";
+        textToRender[38] = "38: Desarrollador por";
+        textToRender[39] = "39: Pablo Sonaglioni \n @pgs1000";
+        textToRender[40] = "40: @emmyta";
+        textToRender[41] = "41: Especial gracias para Lorena Escobedo";
 
         // Correct awnsered by player text:
         correctTextToRender = new string[100];
@@ -127,9 +137,9 @@ public class CorrectionsTexts : MonoBehaviour
         correctTextToRender[24] = "24: No siempre es necesario que te extiendas pero si que ellas sean acordes al puesto.";
         correctTextToRender[25] = "25: Igual, no olvides que esto varía de persona en persona! Sigamos.";
         // Contact:
-        correctTextToRender[26] = "26: Perfecto, esta información de contacto está correcta.";
-        correctTextToRender[27] = "27: s concreta y contiene lo necesario.";
-        correctTextToRender[28] = "28: Siempre es muy importante revistar que no haya ninguna falta y esté actualizada.";
+        correctTextToRender[28] = "28: Perfecto, esta información de contacto está correcta.";
+        correctTextToRender[29] = "29: Es concreta y contiene lo necesario.";
+        correctTextToRender[30] = "30: Siempre es muy importante revistar que no haya ninguna falta y que esté actualizada.";
 
 
         // Wrongly awnsered by player:
@@ -155,9 +165,9 @@ public class CorrectionsTexts : MonoBehaviour
         incorrectTextToRender[24] = "24: No siempre es necesario que te extiendas en tus habilidades pero si que ellas sean acordes al puesto.";
         incorrectTextToRender[25] = "25: Igual, no olvides que esto varía de persona en persona! Sigamos.";
         // Contact:
-        incorrectTextToRender[26] = "26: Ojo. Qué te pareció raro de esta sección?";
-        incorrectTextToRender[27] = "27: La información de contacto no necesita ser extensa.";
-        incorrectTextToRender[28] = "28: Pero es muy importante revistar que no haya ninguna falta y que esté actualizada.";
+        incorrectTextToRender[28] = "28: Ojo. Qué te pareció raro de esta sección?";
+        incorrectTextToRender[29] = "29: La información de contacto no necesita ser extensa.";
+        incorrectTextToRender[30] = "30: Pero es muy importante revistar que no haya ninguna falta y que esté actualizada.";
 
     }
 

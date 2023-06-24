@@ -1276,6 +1276,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 863531c5f593c6a4c95fa514b7c0943e, type: 3}
   - {fileID: 21300000, guid: 8c547bad0cfd1834c963e60db2b30dfc, type: 3}
   timer: 3
+  stepNumber: 26
+  moveTowardsNumber: 5
   thisCanvas: {fileID: 649051874}
   startGame: {fileID: 650674087}
   startGameGO: {fileID: 650674085}

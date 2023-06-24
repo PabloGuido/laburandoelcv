@@ -243,8 +243,36 @@ public class UiManager : MonoBehaviour
             moveTowardsNumber ++;
             moveTowards();
             break;
+        case "endZoom":
+            // code block
+            endZoom();
+            updateTextBox();
+            allowPlayerClickAndShowArrow(false);
+            break;
+        case "cueEndScene":
+            if (stepNumber == textsAndPos.step.Length-1){
+                Debug.Log("volver a cargar intro screen.");
+                break;
+            }
+            else{
+                allowPlayerClickAndShowArrow(false);
+                updateTextBox();
+                cueEndScene();
+                break;
+            }
+
         }
+        
         stepNumber ++;        
+    }
+
+    void cueEndScene(){
+        Invoke("whatToDoNext",2f);
+    }
+
+    void endZoom(){
+        Cv.transform.DOScale(0.4f, 3);
+        CvRT.DOAnchorPos(new Vector2(0, -240f), 3, true).OnComplete(whatToDoNext); 
     }
 
     void hideBorderAndIcon(){
