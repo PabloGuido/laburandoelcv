@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -252,6 +253,7 @@ public class UiManager : MonoBehaviour
         case "cueEndScene":
             if (stepNumber == textsAndPos.step.Length-1){
                 Debug.Log("volver a cargar intro screen.");
+                loadMainMenu();
                 break;
             }
             else{
@@ -264,6 +266,17 @@ public class UiManager : MonoBehaviour
         }
         
         stepNumber ++;        
+    }
+
+    private void nextScene(){
+        //BackGround.Instance.askToGoNextScene(0);
+        SceneManager.LoadScene(0);
+    }
+
+    void loadMainMenu(){
+        textBoxText.text = "";
+        textBox.SetActive(false);
+        CvRT.DOMoveX(1400,1.15f).SetEase(Ease.InOutElastic).OnComplete(nextScene);
     }
 
     void cueEndScene(){
