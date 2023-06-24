@@ -42,6 +42,7 @@
      <Compile Include="Assets\Scripts\How to Play\HowToPlay.cs" />
      <Compile Include="Assets\Scripts\Enter Data\Domain.cs" />
      <Compile Include="Assets\Scripts\GameSceneManager.cs" />
+     <Compile Include="Assets\Scripts\CV\UiManager2.cs" />
      <Compile Include="Assets\Scripts\Main menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\CV\Section.cs" />
      <Compile Include="Assets\Scripts\Enter Data\EnterData.cs" />
@@ -52,11 +53,10 @@
      <Compile Include="Assets\Scripts\Pj Select\PjSelect.cs" />
      <Compile Include="Assets\Scripts\CV\PhotoSection.cs" />
      <Compile Include="Assets\Scripts\DataBackUP.cs" />
+     <Compile Include="Assets\Scripts\CV\AllowPlayerToClick.cs" />
      <Compile Include="Assets\Scripts\Enter Data\DomainButton.cs" />
      <Compile Include="Assets\Scripts\SaveMails.cs" />
      <Compile Include="Assets\Scripts\UiManager.cs" />
-     <Compile Include="Assets\Scripts\CV\UiManager2.cs" />
-     <Compile Include="Assets\Scripts\CV\AllowPlayerToClick.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
