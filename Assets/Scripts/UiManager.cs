@@ -269,6 +269,7 @@ public class UiManager : MonoBehaviour
     }
     void buildUpImpactAndContinue(){
         textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1f, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
+        textsAndPos.CvSectionsGO[moveTowardsNumber].hideBorder();
     }
     void createBuildUp(){
         textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);

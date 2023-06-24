@@ -15,12 +15,17 @@ public class Section : MonoBehaviour
     // Childs
     GameObject correctOption;
     Image correctImage;
+    RectTransform correctImageBack;
+    GameObject correctImageBackGO;
+    GameObject correctImageGO;
     GameObject incorrectOption;
     GameObject border;
     RectTransform borderRT;
     // Icons
     GameObject iconWrong;
     GameObject iconRight;
+    // Animator
+    private Animator blinkAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,17 @@ public class Section : MonoBehaviour
         var imageSize = correctOption.transform.Find("Image").GetComponent<RectTransform>();
         borderRT.sizeDelta = new Vector2(imageSize.sizeDelta.x, imageSize.sizeDelta.y);
         border.SetActive(false);
+        // white back image
+        correctImageBack = correctOption.transform.Find("Back").GetComponent<RectTransform>();
+        correctImageBack.sizeDelta = new Vector2(imageSize.sizeDelta.x, imageSize.sizeDelta.y)*0.9f;
+        correctImageBackGO = correctOption.transform.Find("Back").gameObject;
+        correctImageBackGO.SetActive(false);
+        //
+        correctImageGO = correctOption.transform.Find("Image").gameObject;
+        //
+
+        blinkAnim = correctOption.transform.GetComponent<Animator>();
+        blinkAnim.enabled = false;
         // Icons:
         iconWrong = border.transform.Find("IconWrong").gameObject;
         iconRight = border.transform.Find("IconRight").gameObject;
@@ -55,20 +71,35 @@ public class Section : MonoBehaviour
 
 
     public void hideBorderAndSettleCorrectImage(){
+        // hide border moved to hideBorder()
+        // if (isIncorrect){
+        //     correctImage.DOKill();
+        // }
+
+        blinkAnim.enabled = false;
+        correctImageBackGO.SetActive(false);
+        incorrectOption.SetActive(false);
+        correctOption.SetActive(true);
+        correctImageGO.SetActive(true);
+        correctImage.enabled = true;
+        //correctImage.color = new Color(1,1,1,1);
+    }
+
+    public void hideBorder(){
         border.SetActive(false);
-        if (isIncorrect){
-            correctImage.DOKill();
-        }        
-        correctImage.color = new Color(1,1,1,1);
     }
     
     public void showCorrectImage(){
+        
         if (isIncorrect){
             correctOption.SetActive(true);
-            Color alphaZero = new Color(1,1,1,0);
-            correctImage.DOColor(alphaZero, 0);
-            Color alphaOne = new Color(1,1,1,1);
-            correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
+            correctImageBackGO.SetActive(true);
+            blinkAnim.enabled = true;
+
+            // Color alphaZero = new Color(1,1,1,0);
+            // correctImage.DOColor(alphaZero, 0);
+            // Color alphaOne = new Color(1,1,1,1);
+            // correctImage.DOColor(alphaOne, 1).SetLoops(-1, LoopType.Yoyo);
         }
 
     }
@@ -81,6 +112,7 @@ public class Section : MonoBehaviour
     }
 
     public void showCorrectIcon(){
+        
         float iconScale = 1.25f;
         float tweenTime = 0.65f;
         if (!markedAsIncorrect){
