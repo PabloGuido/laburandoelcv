@@ -11,6 +11,7 @@ public class CorrectionsTexts : MonoBehaviour
     [HideInInspector] public float[] CvZoom;
 
     [HideInInspector] public RectTransform [] CvSectionsPos;
+    [HideInInspector] public Transform [] SectionOffset;
     [HideInInspector] public Section [] CvSectionsGO;
     // The cv
     GameObject Cv;
@@ -18,7 +19,8 @@ public class CorrectionsTexts : MonoBehaviour
     void Start()
     {
         // Zooms:
-        CvZoom = new float[]{2f,1.75f,1.65f,1.65f,1.5f,1.75f,2f};
+        //CvZoom = new float[]{2f,1.75f,1.65f,1.65f,1.5f,1.75f,2f};
+        CvZoom = new float[]{0.75f,0.751f,0.751f,0.751f,0.751f,0.751f,0.751f};
         //
         CvSectionsGO = new Section[6];
         Cv = gameObject.transform.Find("CV").gameObject;
@@ -37,8 +39,20 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsPos[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[2] = Cv.transform.Find("Education").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[3] = Cv.transform.Find("Experience").gameObject.GetComponent<RectTransform>();
+        //CvSectionsPos[3].anchoredPosition = CvSectionsPos[3].anchoredPosition + new Vector2(0, -500);
         CvSectionsPos[4] = Cv.transform.Find("Abilities").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[5] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
+        //
+        SectionOffset = new Transform[6];        
+                
+        SectionOffset[0] = Cv.transform.Find("Name").transform.Find("Offset").GetComponent<Transform>();
+        SectionOffset[1] = Cv.transform.Find("Presentation").Find("Offset").GetComponent<Transform>();
+        SectionOffset[2] = Cv.transform.Find("Education").Find("Offset").GetComponent<Transform>();
+        SectionOffset[3] = Cv.transform.Find("Experience").Find("Offset").GetComponent<Transform>();
+        //CvSectionsPos[3].anchoredPosition = CvSectionsPos[3].anchoredPosition + new Vector2(0, -500);
+        SectionOffset[4] = Cv.transform.Find("Abilities").Find("Offset").GetComponent<Transform>();
+        SectionOffset[5] = Cv.transform.Find("Contact").Find("Offset").GetComponent<Transform>();
+        //Debug.Log(SectionOffset[4]);
         // Normal text:
         step = new string[]{
         "read", "animate", "buildUp", "awnser", "correction", "settle", "next", // Photo + Name

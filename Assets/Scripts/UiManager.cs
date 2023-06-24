@@ -268,16 +268,22 @@ public class UiManager : MonoBehaviour
         textsAndPos.CvSectionsGO[moveTowardsNumber].showCorrectImage();
     }
     void buildUpImpactAndContinue(){
-        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1f/3, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1f, 0.15f).SetEase(Ease.OutBack).OnComplete(whatToDoNext);
     }
     void createBuildUp(){
-        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f/3, 2).OnComplete(buildUpImpactAndContinue);
+        textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
         
     }
 
     void moveTowards(){    
         float scaleCv = textsAndPos.CvZoom[moveTowardsNumber]; 
         var myTargetVec = textsAndPos.CvSectionsPos[moveTowardsNumber].anchoredPosition;
+        var myOffsetX = textsAndPos.SectionOffset[moveTowardsNumber].localPosition.x;
+        var myOffsetY = textsAndPos.SectionOffset[moveTowardsNumber].localPosition.y;
+        //Debug.Log(myOffsetX + "   " + myOffsetY);
+        myTargetVec.x = myTargetVec.x + myOffsetX;
+        myTargetVec.y = myTargetVec.y + myOffsetY;
+
         if (myTargetVec.x > 0){
             myTargetVec.x = -myTargetVec.x;
         }
