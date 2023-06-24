@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] private int whatCvToCorrect;
     //
     private int transTimer = 1;
     //
@@ -103,7 +104,11 @@ public class UiManager : MonoBehaviour
         deactivateIconsOnStart();
         textBox.SetActive(false);
         // Texts
+        // Add method that selects what text we should read.
+        // pj 1:
         textsAndPos = gameObject.GetComponent<CorrectionsTexts>();
+        // pj 2:
+        
 
         
         // Deny input  to player before the CV appears:

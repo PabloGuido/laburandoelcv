@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\CV\Section.cs" />
      <Compile Include="Assets\Scripts\Enter Data\EnterData.cs" />
      <Compile Include="Assets\Scripts\BackGround.cs" />
+     <Compile Include="Assets\Scripts\CV\CorrectionScriptPJ2.cs" />
      <Compile Include="Assets\Screen stuff\ScreenRes.cs" />
      <Compile Include="Assets\Scripts\CorrectionsTexts.cs" />
      <Compile Include="Assets\Scripts\Pj Select\PjSelect.cs" />
