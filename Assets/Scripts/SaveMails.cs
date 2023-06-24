@@ -23,10 +23,10 @@ public class SaveMails : MonoBehaviour
         if (!Directory.Exists(mailFolderDirectory)){
             Directory.CreateDirectory(Application.streamingAssetsPath + "/mails/");
             File.Create(txtFileDirectory);
-            Debug.Log("Creating directoryand file.");
+            //Debug.Log("Creating directoryand file.");
         }
         else {
-            Debug.Log("No need to create directory and file.");
+            //Debug.Log("No need to create directory and file.");
         }
 
         //Invoke("addMailToList", 5);

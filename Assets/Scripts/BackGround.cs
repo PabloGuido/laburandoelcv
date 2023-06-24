@@ -7,7 +7,7 @@ public class BackGround : MonoBehaviour
 {
     public static BackGround Instance;
     // Scenes:
-    private string[] scenes = {"MainMenu", "HowToPlay", "GameScene"};
+    private string[] scenes = {"MainMenu", "HowToPlay", "EnterData", "GameScene"};
     //private int sceneMaxCount = 0; // then use this number to restart the game at game over.
 
     private void Awake()

@@ -15,6 +15,9 @@ public class EnterData : MonoBehaviour
     //
     [SerializeField] private TMP_Text mailField;
     [SerializeField] private TMP_Text domainField;
+    //
+    private RectTransform fullKeyboard;
+    private GameObject needMail;
 
     private void Awake()
     {
@@ -26,19 +29,45 @@ public class EnterData : MonoBehaviour
     {
         startButton = gameObject.transform.Find("Start").GetComponent<Button>();
         startButton.onClick.AddListener(askGoToNextScene);
+        //
+        needMail = gameObject.transform.Find("NeedMail").gameObject;
+        needMail.SetActive(false);
+        //
+        fullKeyboard = gameObject.GetComponent<RectTransform>();
+        fullKeyboard.DOMoveX(-2300f,1f).SetEase(Ease.InOutElastic).From();
     }
 
     private void askGoToNextScene(){
         if (playerCanClick){
             if (mailField.text.Length <= 1 || domainField.text.Length <= 0 ){
-                
-                Debug.Log("Enter mail.");
+                pleaseEnterValidMail();
+                //Debug.Log("Enter mail.");
             }
             else {
                 SaveMails.Instance.addMailToList(mailField.text + "@" + domainField.text);
-                //Debug.Log(mailField.text + "@" + domainField.text);
+                Invoke("nextScene",2f);
+                
+                Debug.Log(mailField.text + "@" + domainField.text);
             }
         }
+    }
+
+    private void pleaseEnterValidMail(){
+        if (!needMail.activeSelf){
+            playerCanClick = false;
+            needMail.SetActive(true);
+            Invoke("pleaseEnterValidMail", 3);
+        }
+        else{
+            playerCanClick = true;
+            needMail.SetActive(false);
+        }
+    }
+
+    private void nextScene(){
+        playerCanClick = false;
+        int sceneNumber = SceneManager.GetActiveScene().buildIndex;
+        BackGround.Instance.askToGoNextScene(sceneNumber);
     }
 
 }

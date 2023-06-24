@@ -56,7 +56,7 @@ public class UiManager : MonoBehaviour
         // Ver de chequear que haya uno solo. creo que no haría falta porque este script no persiste entre escenas.
         Instance = this;
         //Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-        Debug.Log(gameObject.GetComponent<RectTransform>().anchoredPosition.x);
+        //Debug.Log(gameObject.GetComponent<RectTransform>().anchoredPosition.x);
         middleOfScreen = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
 
     }
