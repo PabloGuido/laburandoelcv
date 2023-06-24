@@ -6,14 +6,14 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class UiManager : MonoBehaviour
+public class UiManager2 : MonoBehaviour
 {
     [SerializeField] private int whatCvToCorrect;
     //
     private int transTimer = 1;
     //
 
-    public static UiManager Instance;
+    public static UiManager2 Instance;
     [HideInInspector] public bool playerInputAllowed = true;
     private bool gameCorrectingCv = false;
     bool playerCanClick = false;
@@ -41,7 +41,7 @@ public class UiManager : MonoBehaviour
     Image textBoxImg;
     GameObject textBoxArrow;
     //
-    CorrectionsTexts textsAndPos;
+    CorrectionScriptPJ2 textsAndPos;
 
     //
     GameObject iconWrong;
@@ -109,10 +109,7 @@ public class UiManager : MonoBehaviour
         textBox.SetActive(false);
         // Texts
         // Add method that selects what text we should read
-        textsAndPos = gameObject.GetComponent<CorrectionsTexts>();
-
-        
-        // pj 2:
+        textsAndPos = gameObject.GetComponent<CorrectionScriptPJ2>();
         
 
         

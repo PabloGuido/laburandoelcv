@@ -147,7 +147,7 @@ public class Section : MonoBehaviour
     }
 
     private void taskOnClick(){
-        if (UiManager.Instance.playerInputAllowed){
+        if (AllowPlayerToClick.Instance.playerInputAllowed ){
             if (!markedAsIncorrect){
                 sectionMarkedAsIncorrect(true);
                 

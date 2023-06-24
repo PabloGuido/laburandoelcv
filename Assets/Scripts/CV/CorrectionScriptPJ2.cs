@@ -26,9 +26,9 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         //
         CvSectionsGO = new Section[6];
         Cv = mask.transform.Find("CV").gameObject;
+        CvSectionsGO[0] = Cv.transform.Find("Presentation").gameObject.GetComponent<Section>();
 
-        CvSectionsGO[0] = Cv.transform.Find("Name").gameObject.GetComponent<Section>();
-        CvSectionsGO[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<Section>();
+        CvSectionsGO[1] = Cv.transform.Find("Name").gameObject.GetComponent<Section>();
         CvSectionsGO[2] = Cv.transform.Find("Education").gameObject.GetComponent<Section>();
         CvSectionsGO[3] = Cv.transform.Find("Experience").gameObject.GetComponent<Section>();
         CvSectionsGO[4] = Cv.transform.Find("Abilities").gameObject.GetComponent<Section>();
@@ -36,18 +36,18 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         // 
         CvSectionsPos = new RectTransform[6];        
         
-        
-        CvSectionsPos[0] = Cv.transform.Find("Name").gameObject.GetComponent<RectTransform>();
-        CvSectionsPos[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<RectTransform>();
+        CvSectionsPos[0] = Cv.transform.Find("Presentation").gameObject.GetComponent<RectTransform>();
+
+        CvSectionsPos[1] = Cv.transform.Find("Name").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[2] = Cv.transform.Find("Education").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[3] = Cv.transform.Find("Experience").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[4] = Cv.transform.Find("Abilities").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[5] = Cv.transform.Find("Contact").gameObject.GetComponent<RectTransform>();
         //
         SectionOffset = new Transform[6];        
-                
-        SectionOffset[0] = Cv.transform.Find("Name").transform.Find("Offset").GetComponent<Transform>();
-        SectionOffset[1] = Cv.transform.Find("Presentation").Find("Offset").GetComponent<Transform>();
+        SectionOffset[0] = Cv.transform.Find("Presentation").Find("Offset").GetComponent<Transform>(); 
+
+        SectionOffset[1] = Cv.transform.Find("Name").transform.Find("Offset").GetComponent<Transform>();
         SectionOffset[2] = Cv.transform.Find("Education").Find("Offset").GetComponent<Transform>();
         SectionOffset[3] = Cv.transform.Find("Experience").Find("Offset").GetComponent<Transform>();
         SectionOffset[4] = Cv.transform.Find("Abilities").Find("Offset").GetComponent<Transform>();
@@ -118,9 +118,9 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         // Correct awnsered by player text:
         correctTextToRender = new string[100];
         // Photo + Name:
-        correctTextToRender[3] = "3: ¡La foto está muy borrosa! Muy bien por darte cuenta.";
-        correctTextToRender[4] = "4: Si decidimos poner una foto es muy importante que siempre se nos pueda ver bien.";
-        correctTextToRender[5] = "5: Recordá, no hay oblicación de poner una foto. Vamos con lo siguiente.";
+        correctTextToRender[3] = "3: Bien! Te diste cuenta que este perfil no nos está diciendo mucho, no?";
+        correctTextToRender[4] = "4: El perfil nos la oportunidad de poder presentar quién somos, qué buscamos y qué podemos aportar.";
+        correctTextToRender[5] = "5: Muchísimo mas concreto ahora este perfil. A enfocarse en lo que somos capaces!";
         // Presentation:
         correctTextToRender[8] = "8: Muy bien! Notaste que este CV tiene información que no es relevante para el puesto solicitado.";
         correctTextToRender[9] = "9: Reemplacemos el error por datos acordes al CV.";
@@ -146,9 +146,9 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         // Wrongly awnsered by player:
         incorrectTextToRender = new string[100];
         // Photo + Name:
-        incorrectTextToRender[3] = "3: ¡Cuidado! La foto está muy borrosa y no la marcaste!";
-        incorrectTextToRender[4] = "4: Si decidimos poner una foto es muy importante que siempre se nos pueda ver bien.";
-        incorrectTextToRender[5] = "5: Recordá, no hay oblicación de poner una foto. Vamos con lo siguiente.";
+        incorrectTextToRender[3] = "3: ¡Cuidado! Quizás no te parezca pero  este perfil no nos está diciendo mucho.";
+        incorrectTextToRender[4] = "4: El perfil nos la oportunidad de poder presentar quien somos, que buscamos y que podemos aportar.";
+        incorrectTextToRender[5] = "5: Fijate ahora qué tal. Muchísimo mas concreto este perfil. A enfocarse en lo que somos capaces!";
         // Presentation:
         incorrectTextToRender[8] = "8: ¡Cuidado! ¡La ciencia ficción y el karate son grandes interes pero no relvantes para nuestro curriculum!";
         incorrectTextToRender[9] = "9: Recordá que la información en el CV tiene que corresponder al puesto solicitado.";

@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 797787129722142490}
   - component: {fileID: 797787129722142491}
   - component: {fileID: 4478089476090699823}
+  - component: {fileID: 3339533918805320734}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1471,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a00eb1c0db28f4db14eab2515389ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatCvToCorrect: 0
   playerInputAllowed: 1
   skipCountdown: 0
   countDownImgArray:
@@ -1542,6 +1544,18 @@ MonoBehaviour:
   CvSectionsPos: []
   SectionOffset: []
   CvSectionsGO: []
+--- !u!114 &3339533918805320734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797787129722142497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1434236bdeb22c54dbf05507596db247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &797787129755434115
 GameObject:
   m_ObjectHideFlags: 0

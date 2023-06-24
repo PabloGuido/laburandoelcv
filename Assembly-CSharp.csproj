@@ -55,6 +55,8 @@
      <Compile Include="Assets\Scripts\Enter Data\DomainButton.cs" />
      <Compile Include="Assets\Scripts\SaveMails.cs" />
      <Compile Include="Assets\Scripts\UiManager.cs" />
+     <Compile Include="Assets\Scripts\CV\UiManager2.cs" />
+     <Compile Include="Assets\Scripts\CV\AllowPlayerToClick.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
