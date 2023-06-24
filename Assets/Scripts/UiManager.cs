@@ -37,6 +37,7 @@ public class UiManager : MonoBehaviour
     // TextBox:
     GameObject textBox;
     TMP_Text textBoxText;
+    Image textBoxImg;
     GameObject textBoxArrow;
     CorrectionsTexts textsAndPos;
     GameObject iconWrong;
@@ -44,6 +45,11 @@ public class UiManager : MonoBehaviour
     bool playerAwnseredRight;
     int stepNumber = 0;
     int moveTowardsNumber = 0;
+    // Colors:
+    Color yellow = new Color(0.98f, 0.75f, 0.14f, 1f);
+    Color green = new Color(0.3f, 0.87f, 0.56f, 1f);
+    Color red = new Color(1f, 0.29f, 0.55f, 1f);
+
     // Canvas Sort Order:
     [SerializeField] private Canvas thisCanvas;
 
@@ -88,6 +94,9 @@ public class UiManager : MonoBehaviour
         // TextBox:
         textBox = gameObject.transform.Find("TextBox").gameObject;
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
+        textBoxImg = textBox.GetComponent<Image>();
+        textBoxImg.color = yellow;
+
         textBoxArrow = textBox.transform.Find("Arrow").gameObject;        
         iconWrong = textBox.transform.Find("IconWrong").gameObject;
         iconRight = textBox.transform.Find("IconRight").gameObject;
@@ -277,7 +286,7 @@ public class UiManager : MonoBehaviour
     void loadMainMenu(){
         textBoxText.text = "";
         textBox.SetActive(false);
-        CvRT.DOMoveX(1400,1.15f).SetEase(Ease.InOutElastic).OnComplete(nextScene);
+        CvRT.DOMoveX(1400,2f).SetEase(Ease.InSine).OnComplete(nextScene);
     }
 
     void cueEndScene(){
@@ -286,10 +295,11 @@ public class UiManager : MonoBehaviour
 
     void endZoom(){
         Cv.transform.DOScale(0.8f, 3);
-        CvRT.DOAnchorPos(new Vector2(0, -240f), 3, true).OnComplete(whatToDoNext); 
+        CvRT.DOAnchorPos(new Vector2(0, -400f), 3, true).OnComplete(whatToDoNext); 
     }
 
     void hideBorderAndIcon(){
+        textBoxImg.color = yellow;
         deactivateIconsOnStart();
         textsAndPos.CvSectionsGO[moveTowardsNumber].hideBorderAndSettleCorrectImage();
     }
@@ -300,9 +310,11 @@ public class UiManager : MonoBehaviour
             return;
         }
         if (playerAwnseredRight){
+            textBoxImg.color = green;
             iconRight.SetActive(true);
         }
         else {
+            textBoxImg.color = red;
             iconWrong.SetActive(true);
         }
     }

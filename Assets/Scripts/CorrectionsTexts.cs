@@ -62,7 +62,7 @@ public class CorrectionsTexts : MonoBehaviour
         "buildUp", "awnser", "correction", "settle", "next", // Abilities
         "buildUp", "awnser", "correction", "settle", // Contact
         "endZoom","read","read","read","read","read",
-        "cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene",
+        "cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene",
         };
 
         textToRender = new string[100];
@@ -111,10 +111,9 @@ public class CorrectionsTexts : MonoBehaviour
         textToRender[35] = "35: Otro par de ojos nunca está de mas!";
         textToRender[36] = "36: Con esto llegamos al final. Espero que alguno de estos consejos te puedan servir :D";
         textToRender[37] = "37: Gracias por jugar!";
-        textToRender[38] = "38: Desarrollador por";
-        textToRender[39] = "39: Pablo Sonaglioni \n @pgs1000";
-        textToRender[40] = "40: @emmyta";
-        textToRender[41] = "41: Especial gracias para Lorena Escobedo";
+        textToRender[38] = "38: Desarrollador por:\nPablo Sonaglioni \n @pgs1000";
+        textToRender[39] = "39: @emmyta";
+        textToRender[40] = "41: Especial gracias para Lorena Escobedo";
 
         // Correct awnsered by player text:
         correctTextToRender = new string[100];
