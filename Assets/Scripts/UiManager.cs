@@ -18,6 +18,7 @@ public class UiManager : MonoBehaviour
     bool playerCanClick = false;
 
     // Show CV and countdown:
+    GameObject mask;
     GameObject Cv;
     RectTransform CvRT;
     [SerializeField] private bool skipCountdown;
@@ -64,9 +65,9 @@ public class UiManager : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-        
+        mask = gameObject.transform.Find("Mask").gameObject;
         // Show CV and countdown:
-        Cv = gameObject.transform.Find("CV").gameObject;
+        Cv = mask.transform.Find("CV").gameObject;
         Cv.SetActive(false);
         CvRT = Cv.GetComponent<RectTransform>();        
         countDownGO = gameObject.transform.Find("Countdown").gameObject;
@@ -284,7 +285,7 @@ public class UiManager : MonoBehaviour
     }
 
     void endZoom(){
-        Cv.transform.DOScale(0.4f, 3);
+        Cv.transform.DOScale(0.8f, 3);
         CvRT.DOAnchorPos(new Vector2(0, -240f), 3, true).OnComplete(whatToDoNext); 
     }
 

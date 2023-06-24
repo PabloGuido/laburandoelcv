@@ -13,17 +13,19 @@ public class CorrectionsTexts : MonoBehaviour
     [HideInInspector] public RectTransform [] CvSectionsPos;
     [HideInInspector] public Transform [] SectionOffset;
     [HideInInspector] public Section [] CvSectionsGO;
+
+    GameObject mask;
     // The cv
     GameObject Cv;
     // Start is called before the first frame update
     void Start()
     {
+        mask = gameObject.transform.Find("Mask").gameObject;
         // Zooms:
-        //CvZoom = new float[]{2f,1.75f,1.65f,1.65f,1.5f,1.75f,2f};
-        CvZoom = new float[]{0.75f,0.751f,0.751f,0.751f,0.751f,0.751f,0.751f};
+        CvZoom = new float[]{1.5f,1.51f,1.51f,1.51f,1.51f,1.51f,1.51f};
         //
         CvSectionsGO = new Section[6];
-        Cv = gameObject.transform.Find("CV").gameObject;
+        Cv = mask.transform.Find("CV").gameObject;
 
         CvSectionsGO[0] = Cv.transform.Find("Name").gameObject.GetComponent<Section>();
         CvSectionsGO[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<Section>();
@@ -33,7 +35,7 @@ public class CorrectionsTexts : MonoBehaviour
         CvSectionsGO[5] = Cv.transform.Find("Contact").gameObject.GetComponent<Section>();
         // 
         CvSectionsPos = new RectTransform[6];        
-        Cv = gameObject.transform.Find("CV").gameObject;
+        
         
         CvSectionsPos[0] = Cv.transform.Find("Name").gameObject.GetComponent<RectTransform>();
         CvSectionsPos[1] = Cv.transform.Find("Presentation").gameObject.GetComponent<RectTransform>();
