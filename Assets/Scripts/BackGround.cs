@@ -12,13 +12,14 @@ public class BackGround : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this){ 
-            Destroy(this); 
+        if (Instance != null){ 
+            Destroy(gameObject); 
+            return;
         } 
-        else{ 
-            Instance = this; 
-            DontDestroyOnLoad(this.gameObject);
-        } 
+
+        Instance = this; 
+        DontDestroyOnLoad(gameObject);
+        
     }
 
     private void nextScene(int sceneAsking){          

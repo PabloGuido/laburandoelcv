@@ -781,6 +781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToDisable: {fileID: 961419220}
   DisableCamera: 1
+  playerCanClick: 0
 --- !u!1001 &4284676132041124982
 PrefabInstance:
   m_ObjectHideFlags: 0

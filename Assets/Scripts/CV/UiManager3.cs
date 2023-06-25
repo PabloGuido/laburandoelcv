@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager3 : MonoBehaviour
 {
-    [SerializeField] private int whatCvToCorrect;
+    //[SerializeField] private int whatCvToCorrect;
     //
     private int transTimer = 1;
     //
@@ -58,8 +58,8 @@ public class UiManager3 : MonoBehaviour
     [SerializeField] private Canvas thisCanvas;
     
     // test build
-    public Button startGame;
-    public GameObject startGameGO;
+    //public Button startGame;
+    //public GameObject startGameGO;
 
     private float middleOfScreen;
 
@@ -117,8 +117,8 @@ public class UiManager3 : MonoBehaviour
         AllowPlayerToClick.Instance.playerInputAllowed = false;
 
         //
-        startGame.onClick.AddListener(countdownToShowCv);
-        //countdownToShowCv();
+        //startGame.onClick.AddListener(countdownToShowCv);
+        countdownToShowCv();
 
     }
 
@@ -179,7 +179,7 @@ public class UiManager3 : MonoBehaviour
             return;
         }
         else if (countDownToCv == 4){
-            startGameGO.SetActive(false);
+            //startGameGO.SetActive(false);
             countDownImg.DOFade(0f, 1.5f).From(); // Fades in "LISTO?";
             Invoke("countdownToShowCv", 3);
             return;

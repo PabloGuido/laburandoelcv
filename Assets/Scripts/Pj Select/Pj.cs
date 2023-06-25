@@ -19,8 +19,10 @@ public class Pj : MonoBehaviour
 
 
     void askToLoadScene(){
-        SceneManager.LoadScene(sceneToLoad);
+        if (PjSelect.Instance.playerCanClick){
+            Debug.Log("Click");
+            PjSelect.Instance.playerCanClick = false;
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
-
-
 }
