@@ -128,7 +128,7 @@ public class CorrectionScriptPJ4 : MonoBehaviour
         // Name:
         correctTextToRender[3] = "3: Muy bien! Te diste cuenta que nos está faltando algo por acá.";
         correctTextToRender[4] = "4: Nunca olvidemos agregar nuestra profesión o puesto al que apuntamos!";
-        correctTextToRender[5] = "5: Por cierto, en este CV no hay foto y está bien. Podes elegir tenerla como no. Continuemos.";
+        correctTextToRender[5] = "5: Por cierto, en este CV hay foto pero podes elegir tenerla como no. Continuemos.";
         // Presentation:
         correctTextToRender[8] = "8: Quizás podamos modificar un poco este perfil profesional, no?";
         correctTextToRender[9] = "9: Reflexionar sobre cuál es tu misión, visión y valores para transmitirlos en esta sección.";
@@ -160,7 +160,7 @@ public class CorrectionScriptPJ4 : MonoBehaviour
         // Name:
         incorrectTextToRender[3] = "3: ¡Cuidado! Acá nos estaría faltando algo.. Qué será?";
         incorrectTextToRender[4] = "4: Claro! No olvidemos agregar nuestra profesión o puesto al que apuntamos en el CV!";
-        incorrectTextToRender[5] = "5: Por cierto, en este CV no hay foto y está bien. Podes elegir tenerla como no. Continuemos.";
+        incorrectTextToRender[5] = "5: Por cierto, en este CV hay foto pero podes elegir tenerla como no. Continuemos.";
         // Presentation:
         incorrectTextToRender[8] = "8: Quizás podamos modificar un poco este perfil profesional. Veamos...";
         incorrectTextToRender[9] = "9: Reflexionar sobre cuál es tu misión, visión y valores para transmitirlos en esta sección.";

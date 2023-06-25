@@ -151,9 +151,9 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         correctTextToRender[29] = "29: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
         correctTextToRender[30] = "30: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
         // Contact:
-        correctTextToRender[33] = "28: Ojo. Qué te pareció raro de esta sección?";
-        correctTextToRender[34] = "29: La información de contacto no necesita ser extensa.";
-        correctTextToRender[35] = "30: Pero es muy importante revistar que no haya ninguna falta y que esté actualizada.";
+        correctTextToRender[33] = "28: Perfecto, esta información de contacto está correcta.";
+        correctTextToRender[34] = "29: Es concreta y contiene lo necesario.";
+        correctTextToRender[35] = "30: Siempre es muy importante revistar que no haya ninguna falta y esté actualizada.";
 
 
         // Wrongly awnsered by player:
@@ -183,9 +183,9 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         incorrectTextToRender[29] = "29: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
         incorrectTextToRender[30] = "30: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
         // Contact:
-        incorrectTextToRender[33] = "28: Perfecto, esta información de contacto está correcta.";
-        incorrectTextToRender[34] = "29: Es concreta y contiene lo necesario.";
-        incorrectTextToRender[35] = "30: Siempre es muy importante revistar que no haya ninguna falta y esté actualizada.";
+        incorrectTextToRender[33] = "28: Ojo. Qué te pareció raro de esta sección?";
+        incorrectTextToRender[34] = "29: La información de contacto no necesita ser extensa.";
+        incorrectTextToRender[35] = "30: Pero es muy importante revistar que no haya ninguna falta y que esté actualizada.";
     }
 
 

@@ -5908,6 +5908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e5289206ee6024eba59dce650aea0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraToDisable: {fileID: 1511806239}
+  DisableCamera: 1
   playerCanClick: 1
   mailField: {fileID: 1941095394}
   domainField: {fileID: 595236555}

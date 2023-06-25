@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class EnterData : MonoBehaviour
 {
+    [SerializeField] private GameObject cameraToDisable;
+    [SerializeField] private bool DisableCamera;
+    //
     public static EnterData Instance;
     public bool playerCanClick = false;
     //
@@ -27,6 +30,8 @@ public class EnterData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (DisableCamera) cameraToDisable.SetActive(false);
+        //
         startButton = gameObject.transform.Find("Start").GetComponent<Button>();
         startButton.onClick.AddListener(askGoToNextScene);
         //

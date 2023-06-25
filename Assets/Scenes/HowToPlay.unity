@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToDisable: {fileID: 757610197}
-  DisableCamera: 0
+  DisableCamera: 1
 --- !u!1 &752888634
 GameObject:
   m_ObjectHideFlags: 0
