@@ -8,9 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class UiManager2 : MonoBehaviour
 {
-    //[SerializeField] private int whatCvToCorrect;
-    //
-    private int transTimer = 2;
+     //
+    private float transTimer = 2.5f;
     //
 
     public static UiManager2 Instance;
@@ -49,6 +48,8 @@ public class UiManager2 : MonoBehaviour
     bool playerAwnseredRight;
     int stepNumber = 0;
     int moveTowardsNumber = 0;
+    //
+    GameObject semiWhite;
     // Colors:
     Color yellow = new Color(0.98f, 0.75f, 0.14f, 1f);
     Color green = new Color(0.3f, 0.87f, 0.56f, 1f);
@@ -107,9 +108,15 @@ public class UiManager2 : MonoBehaviour
         iconRight = textBox.transform.Find("IconRight").gameObject;
         deactivateIconsOnStart();
         textBox.SetActive(false);
+        //
+        semiWhite = mask.transform.Find("SemiWhite").gameObject;
+        
         // Texts
         // Add method that selects what text we should read
         textsAndPos = gameObject.GetComponent<CorrectionScriptPJ2>();
+
+        
+        // pj 2:
         
 
         
@@ -148,7 +155,7 @@ public class UiManager2 : MonoBehaviour
     }
 
     void changeThisCanvasSortOrderToTop(){
-        thisCanvas.sortingOrder = 10;
+        //thisCanvas.sortingOrder = 10;
     }
 
     void cueInTheCvAnimation(){
@@ -402,14 +409,27 @@ public class UiManager2 : MonoBehaviour
         Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
     }
 
+    void disableCorrectionSemiWhite(){
+        semiWhite.SetActive(false);
+        correctionImg.SetActive(false);
+    }
+
+
     void showCorrectionImg(){
         if (correctionImg.activeSelf){
-            correctionImg.SetActive(false);
+            //correctionImg.SetActive(false);
+            semiWhite.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).OnComplete(disableCorrectionSemiWhite);
+            correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.45f);
             gameCorrectingCv = true;
             showTextBox();
         }
         else{
             correctionImg.SetActive(true);
+            correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.25f).From();
+
+            CvRT.DOScale(0.7f, 1.75f);            
+            CvRT.DOMoveY(CvRT.transform.position.y - 25f, 1.75f);
+
             Invoke("showCorrectionImg", transTimer);
         }
     }
@@ -421,13 +441,16 @@ public class UiManager2 : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
-            thisCanvas.sortingOrder = 1;
+            //thisCanvas.sortingOrder = 1;
             showCorrectionImg(); 
 
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
             timesUp.SetActive(true);
+            timesUp.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).From();
+            semiWhite.SetActive(true);
+            semiWhite.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).From();
             Invoke("theTimeIsUp", transTimer);
         }
 

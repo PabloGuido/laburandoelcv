@@ -409,12 +409,17 @@ public class UiManager : MonoBehaviour
         Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
     }
 
+    void disableCorrectionSemiWhite(){
+        semiWhite.SetActive(false);
+        correctionImg.SetActive(false);
+    }
+
 
     void showCorrectionImg(){
         if (correctionImg.activeSelf){
             //correctionImg.SetActive(false);
-            semiWhite.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f);
-            correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f);
+            semiWhite.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).OnComplete(disableCorrectionSemiWhite);
+            correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.45f);
             gameCorrectingCv = true;
             showTextBox();
         }
