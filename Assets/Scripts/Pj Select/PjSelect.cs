@@ -10,6 +10,7 @@ public class PjSelect : MonoBehaviour
     [SerializeField] private bool DisableCamera;
     //
     public bool playerCanClick;
+    public bool PjSelected = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,6 +20,12 @@ public class PjSelect : MonoBehaviour
     {
         if (DisableCamera) cameraToDisable.SetActive(false);
         //      
+        playerCanClick = false;
+        Invoke("allowClick", 1f);
+    }
+
+    private void allowClick(){
+        Debug.Log("allowing click");
         playerCanClick = true;
     }
 

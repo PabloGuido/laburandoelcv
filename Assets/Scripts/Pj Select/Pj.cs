@@ -10,19 +10,40 @@ public class Pj : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
     private Button thisButton;
+    private bool fadeThis = true;
+    private bool thisOneWasClicked = false;
     // Start is called before the first frame update
     void Start()
     {
         thisButton = gameObject.GetComponent<Button>();
-        thisButton.onClick.AddListener(askToLoadScene);
+        thisButton.onClick.AddListener(fadePjs);
+        gameObject.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.75f).From();
+    }
+
+    void Update(){
+        if (PjSelect.Instance.PjSelected && fadeThis){
+            fadeThis = false;
+            gameObject.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.75f).OnComplete(askToLoadScene);
+        }
+    }
+     void askToLoadScene(){
+        if (thisOneWasClicked){
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        
+     }
+
+    void fadeOffAllPj(){
+        PjSelect.Instance.PjSelected = true;
     }
 
 
-    void askToLoadScene(){
+    void fadePjs(){
         if (PjSelect.Instance.playerCanClick){
-            Debug.Log("Click");
             PjSelect.Instance.playerCanClick = false;
-            SceneManager.LoadScene(sceneToLoad);
+            thisOneWasClicked = true;
+            gameObject.GetComponent<RectTransform>().DOScale(0.565f, 0.5f).From().OnComplete(fadeOffAllPj);
+            
         }
     }
 }
