@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Pj : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad;
+    [SerializeField] private int sceneToLoad;
     private Button thisButton;
     private bool fadeThis = true;
     private bool thisOneWasClicked = false;
@@ -28,7 +28,8 @@ public class Pj : MonoBehaviour
     }
      void askToLoadScene(){
         if (thisOneWasClicked){
-            SceneManager.LoadScene(sceneToLoad);
+            BackGround.Instance.askToGoNextScene(sceneToLoad-1);
+            //SceneManager.LoadScene(sceneToLoad);
         }
         
      }

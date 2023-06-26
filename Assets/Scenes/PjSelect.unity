@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3627304896384744824, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: sceneToLoad
-      value: GameScene 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3755470125438685131, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: m_Pivot.x
@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3627304896384744824, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: sceneToLoad
-      value: GameScene 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3755470125438685131, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: m_Pivot.x
@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3627304896384744824, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: sceneToLoad
-      value: GameScene 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3755470125438685131, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: m_Pivot.x
@@ -782,6 +782,7 @@ MonoBehaviour:
   cameraToDisable: {fileID: 961419220}
   DisableCamera: 1
   playerCanClick: 0
+  PjSelected: 0
 --- !u!1001 &4284676132041124982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1d25bf34fc7fdd4468e170dc71d12570, type: 3}
     - target: {fileID: 3627304896384744824, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: sceneToLoad
-      value: GameScene
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3755470125438685131, guid: 335fb125aca93e04899af63822c2e154, type: 3}
       propertyPath: m_Pivot.x

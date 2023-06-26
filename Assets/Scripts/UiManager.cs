@@ -150,7 +150,7 @@ public class UiManager : MonoBehaviour
     }
 
     void changeThisCanvasSortOrderToTop(){
-        thisCanvas.sortingOrder = 10;
+        //thisCanvas.sortingOrder = 10;
     }
 
     void cueInTheCvAnimation(){
@@ -289,8 +289,8 @@ public class UiManager : MonoBehaviour
     }
 
     private void nextScene(){
-        //BackGround.Instance.askToGoNextScene(0);
-        SceneManager.LoadScene(0);
+        BackGround.Instance.askToGoNextScene(-1);
+        //SceneManager.LoadScene(0);
     }
 
     void loadMainMenu(){
@@ -423,7 +423,7 @@ public class UiManager : MonoBehaviour
             timerGO.SetActive(false);
             Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
-            thisCanvas.sortingOrder = 1;
+            //thisCanvas.sortingOrder = 1;
             showCorrectionImg(); 
 
         }

@@ -92,7 +92,7 @@ public class EnterData : MonoBehaviour
 
     private void nextScene(){
         int sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        BackGround.Instance.askToGoNextScene(sceneNumber);
+        BackGround.Instance.goToPjSelect(sceneNumber);
     }
 
 }

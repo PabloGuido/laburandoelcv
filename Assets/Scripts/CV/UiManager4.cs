@@ -287,8 +287,8 @@ public class UiManager4 : MonoBehaviour
     }
 
     private void nextScene(){
-        //BackGround.Instance.askToGoNextScene(0);
-        SceneManager.LoadScene(0);
+        BackGround.Instance.askToGoNextScene(-1);
+        //SceneManager.LoadScene(0);
     }
 
     void loadMainMenu(){
