@@ -70,6 +70,7 @@ public class BackGround : MonoBehaviour
         if (sceneNumber == 0){
             gameImg.DOColor(alphaZero, 2);
             mainMenu.DOColor(mainMenuColor, 2);
+            littleLogo.DOColor(alphaZero, 2);
             star.DOColor(alphaOne, 2);
             starRt.DOLocalRotate(new Vector3(0, 0, -360), 60, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1);
         }
