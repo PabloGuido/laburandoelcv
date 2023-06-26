@@ -13,6 +13,7 @@ public class CorrectionScriptPJ2 : MonoBehaviour
     [HideInInspector] public RectTransform [] CvSectionsPos;
     [HideInInspector] public Transform [] SectionOffset;
     [HideInInspector] public Section [] CvSectionsGO;
+    [HideInInspector] public string[] pageTexts;
 
     GameObject mask;
     // The cv
@@ -53,6 +54,15 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         SectionOffset[5] = Cv.transform.Find("Lenguage").Find("Offset").GetComponent<Transform>();
         SectionOffset[6] = Cv.transform.Find("Contact").Find("Offset").GetComponent<Transform>();
         //Debug.Log(SectionOffset[4]);
+        //
+        pageTexts = new string[7];   
+        pageTexts[0] = "PERFIL LABORAL";
+        pageTexts[1] = "EDUCACIÓN Y FORMACIÓN";
+        pageTexts[2] = "EXPERIENCIA";
+        pageTexts[3] = "CURSOS";
+        pageTexts[4] = "HABILIDADES";
+        pageTexts[5] = "IDIOMAS";
+        pageTexts[6] = "CONTACTO";
         // Normal text:
         step = new string[]{
         "read", "animate", "buildUp", "awnser", "correction", "settle", "next", // Presentation
