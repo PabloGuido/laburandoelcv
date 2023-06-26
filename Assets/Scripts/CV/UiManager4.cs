@@ -10,7 +10,7 @@ public class UiManager4 : MonoBehaviour
 {
     //[SerializeField] private int whatCvToCorrect;
     //
-    private int transTimer = 1;
+    private int transTimer = 2;
     //
 
     public static UiManager4 Instance;
@@ -294,7 +294,7 @@ public class UiManager4 : MonoBehaviour
     void loadMainMenu(){
         textBoxText.text = "";
         textBox.SetActive(false);
-        CvRT.DOMoveX(1400,2f).SetEase(Ease.InSine).OnComplete(nextScene);
+        CvRT.DOMoveX(1400,1.25f).SetEase(Ease.OutSine).OnComplete(nextScene);
     }
 
     void cueEndScene(){

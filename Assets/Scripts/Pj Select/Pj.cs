@@ -24,6 +24,7 @@ public class Pj : MonoBehaviour
         if (PjSelect.Instance.PjSelected && fadeThis){
             fadeThis = false;
             gameObject.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.75f).OnComplete(askToLoadScene);
+            BackGround.Instance.updatePageTitle(false, "");
         }
     }
      void askToLoadScene(){

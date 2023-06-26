@@ -22,6 +22,7 @@ public class PjSelect : MonoBehaviour
         //      
         playerCanClick = false;
         Invoke("allowClick", 1f);
+        BackGround.Instance.updatePageTitle(true, "¿A QUIÉN VAS A AYUDAR?");
     }
 
     private void allowClick(){

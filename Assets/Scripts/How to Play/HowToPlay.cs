@@ -79,6 +79,7 @@ public class HowToPlay : MonoBehaviour
         border = cv.transform.Find("Border").gameObject;
 
         showShowTextBox();        
+        BackGround.Instance.updatePageTitle(true, "¿CÓMO JUGAR?");
     }
 
     void Update()

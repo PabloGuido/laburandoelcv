@@ -63,6 +63,7 @@ public class MainMenu : MonoBehaviour
         touchToStart.GetComponent<Image>().DOColor(new Color(1,1,1,0), .75f);
         helpAfriend.GetComponent<Image>().DOColor(new Color(1,1,1,0), .75f);
         logo.GetComponent<Image>().DOColor(new Color(1,1,1,0), .75f).OnComplete(killAllTweens);
+        BackGround.Instance.showLittleLogoAndFadeStar();
     }
 
 

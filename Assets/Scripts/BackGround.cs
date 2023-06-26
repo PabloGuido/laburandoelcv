@@ -16,6 +16,8 @@ public class BackGround : MonoBehaviour
     private RectTransform starRt;
     private Image middleImg;
     private Image gameImg;
+    private Image pageTitle;
+    private TMP_Text pageTxt;
     //
     private Color alphaZero;
     private Color alphaOne;
@@ -42,6 +44,9 @@ public class BackGround : MonoBehaviour
         middleImg = mask.transform.Find("MiddleImg").GetComponent<Image>();
         gameImg = mask.transform.Find("GameImg").GetComponent<Image>();
         //
+        pageTitle = gameObject.transform.Find("PageTitle").GetComponent<Image>();
+        pageTxt = pageTitle.transform.Find("PageTxt").GetComponent<TMP_Text>();
+        //
         alphaZero = new Color(1,1,1,0);
         alphaOne = new Color(1,1,1,1);
         //
@@ -53,6 +58,8 @@ public class BackGround : MonoBehaviour
         mainMenuColor = mainMenu.color;
         //
         littleLogo = gameObject.transform.Find("Border").transform.Find("Logo").GetComponent<Image>();
+        //
+
         
     }
     private void killStarRotation(){
@@ -67,10 +74,8 @@ public class BackGround : MonoBehaviour
             starRt.DOLocalRotate(new Vector3(0, 0, -360), 60, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1);
         }
         else if (sceneNumber == 1){
-            mainMenu.DOColor(alphaZero, 2);
-            star.DOColor(alphaZero, 0.25f).OnComplete(killStarRotation);
-            middleImg.DOColor(alphaOne, 2);
-            littleLogo.DOColor(alphaOne, 2);
+            mainMenu.DOColor(alphaZero, 2);            
+            middleImg.DOColor(alphaOne, 2);            
         }
         else if (sceneNumber > 3){
             middleImg.DOColor(alphaZero, 2);
@@ -90,6 +95,26 @@ public class BackGround : MonoBehaviour
     public void goToPjSelect(int sceneAsking){
         int nextScene = sceneAsking + 1;
         SceneManager.LoadScene(nextScene);
+    }
+
+    public void showLittleLogoAndFadeStar(){
+        star.DOColor(alphaZero, 1.25f).OnComplete(killStarRotation);
+        littleLogo.DOColor(alphaOne, 2);
+    }
+
+
+
+    public void updatePageTitle(bool onOff, string whatSays){
+        if (onOff){
+            pageTxt.text = whatSays;
+            pageTitle.DOColor(alphaOne, 0.75f);
+            pageTxt.DOColor(new Color(0,0,0,1), 0.75f);
+            
+        }
+        else{
+            pageTitle.DOColor(alphaZero, 0.75f);
+            pageTxt.DOColor(new Color(0,0,0,0), 0.75f);
+        }
     }
     
 }
