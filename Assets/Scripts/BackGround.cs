@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 using UnityEngine.SceneManagement;
 
 public class BackGround : MonoBehaviour
 {
     public static BackGround Instance;
-    // Scenes:
-    private string[] scenes = {"MainMenu", "HowToPlay", "EnterData", "GameScene"};
-    //private int sceneMaxCount = 0; // then use this number to restart the game at game over.
+    //
+    private GameObject mask;
+    private Image mainMenu;
+    private Image star;
+    private RectTransform starRt;
+    private Image middleImg;
+    private Image gameImg;
+    //
+    private Color alphaZero;
+    private Color alphaOne;
+
+    
+    private int firstTimeBootingGame = 0;
 
     private void Awake()
     {
@@ -19,11 +32,45 @@ public class BackGround : MonoBehaviour
 
         Instance = this; 
         DontDestroyOnLoad(gameObject);
+        firstTimeBootingGame ++;
+        //
+        mask = gameObject.transform.Find("Mask").gameObject;
+        mainMenu = mask.transform.Find("MainMenu").GetComponent<Image>();
+        star = mask.transform.Find("Star").GetComponent<Image>();
+        middleImg = mask.transform.Find("MiddleImg").GetComponent<Image>();
+        gameImg = mask.transform.Find("GameImg").GetComponent<Image>();
+        //
+        alphaZero = new Color(1,1,1,0);
+        alphaOne = new Color(1,1,1,1);
+        //
+        starRt = mask.transform.Find("Star").gameObject.GetComponent<RectTransform>();
+        starRt.DOLocalRotate(new Vector3(0, 0, -360), 60, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1);
+        //
+        middleImg.color = alphaZero;
+        gameImg.color = alphaZero;
         
+    }
+    private void killStarRotation(){
+        DOTween.Kill(starRt, false);
+    }
+
+    private void changeBackground(int sceneNumber){
+        if (sceneNumber == 0){
+            gameImg.DOColor(alphaZero, 2);
+            mainMenu.DOColor(alphaOne, 2);
+            star.DOColor(alphaOne, 2);
+            starRt.DOLocalRotate(new Vector3(0, 0, -360), 60, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1);
+        }
+        else if (sceneNumber == 1){
+            mainMenu.DOColor(alphaZero, 2);
+            star.DOColor(alphaZero, 1f).OnComplete(killStarRotation);
+            middleImg.DOColor(alphaOne, 2);
+        }
     }
 
     private void nextScene(int sceneAsking){          
         int nextScene = sceneAsking + 1;
+        changeBackground(nextScene);
         SceneManager.LoadScene(nextScene);
     }
 
