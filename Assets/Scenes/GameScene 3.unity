@@ -207,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -880,5 +880,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2d2ad4386e46872409db6e0d7a58298d, type: 3}
   - {fileID: 21300000, guid: 863531c5f593c6a4c95fa514b7c0943e, type: 3}
   - {fileID: 21300000, guid: 8c547bad0cfd1834c963e60db2b30dfc, type: 3}
-  timer: 3
+  timer: 60
   thisCanvas: {fileID: 797787129292308992}

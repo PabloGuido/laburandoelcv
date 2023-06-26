@@ -144,9 +144,9 @@ public class CorrectionsTexts : MonoBehaviour
         correctTextToRender[19] = "19: Mostrar nuestros logros mas concretos puede ser clave a la hora de conseguir un puesto.";
         correctTextToRender[20] = "20: Recorá que esto es super imporante!";
         // Abilities:
-        correctTextToRender[23] = "23: Genial, para algunos puede parecer muy simple pero estas habiliades son correctas.";
-        correctTextToRender[24] = "24: No siempre es necesario que te extiendas pero si que ellas sean acordes al puesto.";
-        correctTextToRender[25] = "25: Igual, no olvides que esto varía de persona en persona! Sigamos.";
+        correctTextToRender[23] = "23: Las habilidades técnicas muy bien. Pero los idiomas qué nivel tenemos?";
+        correctTextToRender[24] = "24: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
+        correctTextToRender[25] = "25: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
         // Contact:
         correctTextToRender[28] = "28: Perfecto, esta información de contacto está correcta.";
         correctTextToRender[29] = "29: Es concreta y contiene lo necesario.";
@@ -172,9 +172,9 @@ public class CorrectionsTexts : MonoBehaviour
         incorrectTextToRender[19] = "19: Mostrar nuestros logros mas concretos puede ser clave a la hora de conseguir un puesto.";
         incorrectTextToRender[20] = "20: Recorá que esto es super imporante!";
         // Abilities:
-        incorrectTextToRender[23] = "23: Te pareció que había algo raro en esta sección?";
-        incorrectTextToRender[24] = "24: No siempre es necesario que te extiendas en tus habilidades pero si que ellas sean acordes al puesto.";
-        incorrectTextToRender[25] = "25: Igual, no olvides que esto varía de persona en persona! Sigamos.";
+        incorrectTextToRender[23] = "23: Ojo! Las habilidades técnicas muy bien. Pero los idiomas qué nivel tenemos?";
+        incorrectTextToRender[24] = "24: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
+        incorrectTextToRender[25] = "25: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
         // Contact:
         incorrectTextToRender[28] = "28: Ojo. Qué te pareció raro de esta sección?";
         incorrectTextToRender[29] = "29: La información de contacto no necesita ser extensa.";
