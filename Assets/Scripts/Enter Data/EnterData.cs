@@ -21,7 +21,8 @@ public class EnterData : MonoBehaviour
     //
     private RectTransform fullKeyboard;
     private GameObject needMail;
-
+    //
+    [SerializeField] private GameObject dropDown;
     private void Awake()
     {
         Instance = this;
@@ -60,6 +61,7 @@ public class EnterData : MonoBehaviour
     private void pleaseEnterValidMail(){
         if (!needMail.activeSelf){
             playerCanClick = false;
+            dropDown.SetActive(false);
             needMail.SetActive(true);
             Invoke("pleaseEnterValidMail", 3);
         }
