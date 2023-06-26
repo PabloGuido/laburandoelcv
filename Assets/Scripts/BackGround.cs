@@ -63,7 +63,7 @@ public class BackGround : MonoBehaviour
         }
         else if (sceneNumber == 1){
             mainMenu.DOColor(alphaZero, 2);
-            star.DOColor(alphaZero, 1f).OnComplete(killStarRotation);
+            star.DOColor(alphaZero, 0.25f).OnComplete(killStarRotation);
             middleImg.DOColor(alphaOne, 2);
         }
     }

@@ -124,7 +124,7 @@ public class HowToPlay : MonoBehaviour
                 killAllTweens();
             break;
             case 4:
-                nextScene();
+                alphaOutElements();
                 
             break;
         }
@@ -132,9 +132,18 @@ public class HowToPlay : MonoBehaviour
         textsCount ++;
     }
     private void nextScene(){
-        playerCanClick = false;
         int sceneNumber = SceneManager.GetActiveScene().buildIndex;
         BackGround.Instance.askToGoNextScene(sceneNumber);
+    }
+
+    private void alphaOutElements(){
+        playerCanClick = false;
+        border.SetActive(false);
+        arrow.SetActive(false);
+        textBoxText.text = "";
+        cvImg.DOColor(new Color(1,1,1,0), 0.75f);
+        textBoxImg.DOColor(new Color(1,1,1,0), 0.75f);
+        mask.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.75f).OnComplete(nextScene);
     }
 
     private void killAllTweens(){

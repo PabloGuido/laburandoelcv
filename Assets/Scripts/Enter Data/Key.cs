@@ -24,8 +24,12 @@ public class Key : MonoBehaviour
         thisButton = gameObject.transform.GetComponent<Button>();
         thisButton.onClick.AddListener(addKeyToField);
     }
+    private void setButtonScale(){
+        gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.785714f,1.724138f,1);
+    }
 
     void addKeyToField(){
+        gameObject.GetComponent<RectTransform>().DOScale(3f, 0.25f).From().OnComplete(setButtonScale);
         if (EnterData.Instance.playerCanClick){
 
         

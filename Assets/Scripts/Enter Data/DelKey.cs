@@ -24,7 +24,12 @@ public class DelKey : MonoBehaviour
         thisButton.onClick.AddListener(removeKeyToField);
     }
 
+    private void setButtonScale(){
+        gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.785714f,1.724138f,1);
+    }
+
     void removeKeyToField(){
+        gameObject.GetComponent<RectTransform>().DOScale(2f, 0.25f).From().OnComplete(setButtonScale);
         if (EnterData.Instance.playerCanClick){
             if (mailField.text.Length > 0){
                 mailField.text = mailField.text.Remove(mailField.text.Length-1,1);
