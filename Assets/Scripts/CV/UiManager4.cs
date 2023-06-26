@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager4 : MonoBehaviour
 {
-     //
+    //
     private float transTimer = 2.5f;
     //
 
@@ -57,12 +57,11 @@ public class UiManager4 : MonoBehaviour
 
     // Canvas Sort Order:
     [SerializeField] private Canvas thisCanvas;
-    
-    // test build
-    //public Button startGame;
-    //public GameObject startGameGO;
-
+    // 
     private float middleOfScreen;
+    //
+    private Image pageTitle;
+    private TMP_Text pageTitleText;
 
     private void Awake()
     {
@@ -114,9 +113,11 @@ public class UiManager4 : MonoBehaviour
         // Texts
         // Add method that selects what text we should read
         textsAndPos = gameObject.GetComponent<CorrectionScriptPJ4>();
-
-        
-        // pj 2:
+        //
+        pageTitle = gameObject.transform.Find("PageTitle").GetComponent<Image>();
+        pageTitleText = gameObject.transform.Find("PageTitle").transform.Find("PageText").GetComponent<TMP_Text>();
+        pageTitle.color = new Color(1,1,1,0);
+        pageTitleText.color = new Color(0,0,0,0);
         
 
         
@@ -237,6 +238,7 @@ public class UiManager4 : MonoBehaviour
             updateTextBox();
             allowPlayerClickAndShowArrow(false);
             moveTowards();
+            updatePageTitle(true, textsAndPos.pageTexts[0]);
             break;
         case "buildUp":
             // code block
@@ -268,16 +270,19 @@ public class UiManager4 : MonoBehaviour
             allowPlayerClickAndShowArrow(false);
             moveTowardsNumber ++;
             moveTowards();
+            updatePageTitle(true, textsAndPos.pageTexts[moveTowardsNumber]);
             break;
         case "endZoom":
             // code block
             endZoom();
             updateTextBox();
             allowPlayerClickAndShowArrow(false);
+            updatePageTitle(true, "LECTURA FINAL");
             break;
         case "cueEndScene":
             if (stepNumber == textsAndPos.step.Length-1){
                 Debug.Log("volver a cargar intro screen.");
+                updatePageTitle(false, "LABURANDO EL CV");
                 loadMainMenu();
                 break;
             }
@@ -285,6 +290,7 @@ public class UiManager4 : MonoBehaviour
                 allowPlayerClickAndShowArrow(false);
                 updateTextBox();
                 cueEndScene();
+                updatePageTitle(true, "LABURANDO EL CV");
                 break;
             }
 
@@ -309,8 +315,8 @@ public class UiManager4 : MonoBehaviour
     }
 
     void endZoom(){
-        Cv.transform.DOScale(0.8f, 3);
-        CvRT.DOAnchorPos(new Vector2(0, -400f), 3, true).OnComplete(whatToDoNext); 
+        Cv.transform.DOScale(0.75f, 3);
+        CvRT.DOAnchorPos(new Vector2(0, -550f), 3, true).OnComplete(whatToDoNext); 
     }
 
     void hideBorderAndIcon(){
@@ -412,6 +418,8 @@ public class UiManager4 : MonoBehaviour
     void disableCorrectionSemiWhite(){
         semiWhite.SetActive(false);
         correctionImg.SetActive(false);
+        //
+        updatePageTitle(true, "CORRECCIÓN");
     }
 
 
@@ -428,7 +436,7 @@ public class UiManager4 : MonoBehaviour
             correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.25f).From();
 
             CvRT.DOScale(0.7f, 1.75f);            
-            CvRT.DOMoveY(CvRT.transform.position.y - 25f, 1.75f);
+            CvRT.DOMoveY(CvRT.transform.position.y - 215f, 1.75f);
 
             Invoke("showCorrectionImg", transTimer);
         }
@@ -465,6 +473,17 @@ public class UiManager4 : MonoBehaviour
         iconRight.SetActive(false);
     }
 
+    public void updatePageTitle(bool onOff, string whatSays){
+        if (onOff){
+            pageTitleText.text = whatSays;
+            pageTitle.DOColor(new Color(1,1,1,1), 0.25f);
+            pageTitleText.DOColor(new Color(0,0,0,1), 0.25f);    
+        }
+        else{
+            pageTitle.DOColor(new Color(1,1,1,0), 0.25f);
+            pageTitleText.DOColor(new Color(0,0,0,0), 0.25f);
+        }
+    }
 }
 
 

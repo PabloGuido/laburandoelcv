@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4572022026620427623, guid: 6f1bc21662e9a52449fd87eb64cbf8f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 100
+      value: 422
       objectReference: {fileID: 0}
     - target: {fileID: 6318935232915894371, guid: 6f1bc21662e9a52449fd87eb64cbf8f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -530,6 +530,10 @@ PrefabInstance:
     - target: {fileID: 797787128564777197, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 797787129511630394, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 797787129511630394, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_ShowMaskGraphic
@@ -717,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 162ef5f70837c3d4b99544fa33f9593a, type: 3}
     - target: {fileID: 3774397904967242726, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 394
+      value: 541
       objectReference: {fileID: 0}
     - target: {fileID: 3774397905006093612, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_LocalPosition.x
@@ -733,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774397905638900925, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 100
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 4478089476090699823, guid: 58ba456f21ae2014f913baa8d7aa4468, type: 3}
       propertyPath: m_Enabled
@@ -957,3 +961,4 @@ MonoBehaviour:
   CvSectionsPos: []
   SectionOffset: []
   CvSectionsGO: []
+  pageTexts: []
