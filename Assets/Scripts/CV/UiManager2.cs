@@ -465,6 +465,8 @@ public class UiManager2 : MonoBehaviour
         iconRight.SetActive(false);
     }
 
+
+
 }
 
 
