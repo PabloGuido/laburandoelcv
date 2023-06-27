@@ -26,6 +26,15 @@ public class UiManager2 : MonoBehaviour
     [SerializeField]  private Sprite[] countDownImgArray = new Sprite[6];
     Image countDownImg;
     GameObject countDownGO; // This is for disabling the 'node';
+    AudioSource countDownShort;
+    AudioSource countDownGoSound;
+    AudioSource song;
+    AudioSource times;
+    AudioSource textBoxClick;
+    AudioSource correct;
+    AudioSource vibra;
+    bool soundedSpecialSound = false;
+    AudioSource build;
     // Timer:
     [SerializeField] private int timer;
     TMP_Text timerText;
@@ -83,6 +92,13 @@ public class UiManager2 : MonoBehaviour
         CvRT = Cv.GetComponent<RectTransform>();        
         countDownGO = gameObject.transform.Find("Countdown").gameObject;
         countDownImg = countDownGO.transform.GetComponent<Image>();
+        countDownShort = countDownGO.transform.Find("short").GetComponent<AudioSource>();
+        countDownGoSound = countDownGO.transform.Find("go").GetComponent<AudioSource>();
+        song = countDownGO.transform.Find("song").GetComponent<AudioSource>();
+        times = countDownGO.transform.Find("times").GetComponent<AudioSource>();
+        correct = countDownGO.transform.Find("correct").GetComponent<AudioSource>();
+        vibra = countDownGO.transform.Find("vibra").GetComponent<AudioSource>();
+        build = countDownGO.transform.Find("build").GetComponent<AudioSource>();
         //Timer Time:
         //timer = 60; // In case of need or in the final build put set timer here. Maybe we can add a setting for this, at least yes for testing.
         
@@ -101,6 +117,7 @@ public class UiManager2 : MonoBehaviour
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
         textBoxImg = textBox.GetComponent<Image>();
         textBoxImg.color = yellow;
+        textBoxClick = textBox.GetComponent<AudioSource>();
 
         textBoxArrow = textBox.transform.Find("Arrow").gameObject;        
         iconWrong = textBox.transform.Find("IconWrong").gameObject;
@@ -166,7 +183,8 @@ public class UiManager2 : MonoBehaviour
     }
 
     void startCorrectingCv(){
-        countDownGO.SetActive(false);
+        //
+        countDownImg.enabled = false;
         timerGO.SetActive(true);
         AllowPlayerToClick.Instance.playerInputAllowed = true;
         Invoke("startTimer", 1);
@@ -181,6 +199,8 @@ public class UiManager2 : MonoBehaviour
         countDownImg.sprite = countDownImgArray[countDownToCv];
         countDownToCv --;
         if (countDownToCv == 0){
+            countDownGoSound.Play();
+            song.Play();
             countDownGO.transform.GetComponent<RectTransform>().DOScale(0.45f, 0.15f).From();
             Invoke("startCorrectingCv", 1);
             cueInTheCvAnimation();
@@ -193,6 +213,7 @@ public class UiManager2 : MonoBehaviour
             return;
         }
         else {
+            countDownShort.Play();
             countDownGO.transform.GetComponent<RectTransform>().DOScale(0.45f, 0.15f).From();
             Invoke("countdownToShowCv", 1);
         }        
@@ -230,6 +251,7 @@ public class UiManager2 : MonoBehaviour
         case "read":
             // code block
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             Debug.Log("READ");
             break;
@@ -249,6 +271,7 @@ public class UiManager2 : MonoBehaviour
         case "awnser":
             // code block            
             updateTextBoxWithAwnser();
+            //scaleAndSoundText();
             showCorrectIcon();
             allowPlayerClickAndShowArrow(true);
             break;
@@ -256,17 +279,21 @@ public class UiManager2 : MonoBehaviour
             // code block
             doTheCorrection();
             updateTextBoxWithAwnser();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             break;
         case "settle":
             // code block
             hideBorderAndIcon();
             updateTextBoxWithAwnser();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             break; 
         case "next":
             // code block
+            soundedSpecialSound = false;
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(false);
             moveTowardsNumber ++;
             moveTowards();
@@ -276,6 +303,7 @@ public class UiManager2 : MonoBehaviour
             // code block
             endZoom();
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(false);
             updatePageTitle(true, "LECTURA FINAL");
             break;
@@ -289,6 +317,7 @@ public class UiManager2 : MonoBehaviour
             else{
                 allowPlayerClickAndShowArrow(false);
                 updateTextBox();
+                scaleAndSoundText();
                 cueEndScene();
                 updatePageTitle(true, "LABURANDO EL CV");
                 break;
@@ -347,6 +376,7 @@ public class UiManager2 : MonoBehaviour
         textsAndPos.CvSectionsGO[moveTowardsNumber].hideBorder();
     }
     void createBuildUp(){
+        build.Play();
         textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
         
     }
@@ -379,6 +409,7 @@ public class UiManager2 : MonoBehaviour
     }
     void updateTextBoxWithAwnser(){
         // The correct awnsers.
+        
         bool sectionIsIncorrect = textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect;
         bool markedAsIncorrectByPlayer = textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect;
 
@@ -386,10 +417,24 @@ public class UiManager2 : MonoBehaviour
             if (markedAsIncorrectByPlayer){
                 playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    correct.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
             else if (!markedAsIncorrectByPlayer){
                 playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    vibra.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
         } 
         //
@@ -397,16 +442,36 @@ public class UiManager2 : MonoBehaviour
             if (markedAsIncorrectByPlayer){
                 playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    vibra.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
             else if (!markedAsIncorrectByPlayer){
                 playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    correct.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
         }
         
+        
+    }
+    void scaleAndSoundText(){
+        textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
+        textBoxClick.Play();
     }
     void updateTextBox(){       
         textBoxText.text = textsAndPos.textToRender[stepNumber];
+        
     }
 
     void showTextBox(){
@@ -430,6 +495,7 @@ public class UiManager2 : MonoBehaviour
             correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.45f);
             gameCorrectingCv = true;
             showTextBox();
+            BackGround.Instance.playSound("introMusic");
         }
         else{
             correctionImg.SetActive(true);
@@ -443,6 +509,7 @@ public class UiManager2 : MonoBehaviour
     }
 
     void theTimeIsUp(){
+        
         if (timesUp.activeSelf){
             // Disabling visual stuff:
             timesUp.SetActive(false);
@@ -455,6 +522,8 @@ public class UiManager2 : MonoBehaviour
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
+            times.Play();
+            song.DOFade(0, 3.5f);
             timesUp.SetActive(true);
             timesUp.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).From();
             semiWhite.SetActive(true);
