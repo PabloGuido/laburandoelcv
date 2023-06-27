@@ -83,6 +83,15 @@ public class BackGround : MonoBehaviour
         introMusic.Stop();
     }
 
+    private void killMiddleMovement(){
+        DOTween.Kill( mask.transform.Find("MiddleImg").GetComponent<RectTransform>(), true);
+    }
+
+    private void moveMiddleImg(){
+        //mask.transform.Find("MiddleImg").GetComponent<RectTransform>().DOLocalMoveX(-70f, 8f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        mask.transform.Find("MiddleImg").GetComponent<RectTransform>().DOLocalMoveY(-100f, 4f).SetLoops(-1, LoopType.Yoyo);
+    }
+
     private void changeBackground(int sceneNumber){
         if (sceneNumber == 0){
             gameImg.DOColor(alphaZero, 2);
@@ -92,10 +101,13 @@ public class BackGround : MonoBehaviour
             starRt.DOLocalRotate(new Vector3(0, 0, -360), 60, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1);
         }
         else if (sceneNumber == 1){
-            mainMenu.DOColor(alphaZero, 2);            
-            middleImg.DOColor(alphaOne, 2);            
+            mainMenu.DOColor(alphaZero, 2);        
+            
+
+            middleImg.DOColor(alphaOne, 2).OnComplete(moveMiddleImg);            
         }
         else if (sceneNumber > 3){
+            killMiddleMovement();
             introMusic.DOFade(0,2).OnComplete(stopIntroMusic);
             middleImg.DOColor(alphaZero, 2);
             gameImg.DOColor(alphaOne, 2);
