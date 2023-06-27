@@ -155,7 +155,7 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         // Habilidades y competencias:
         correctTextToRender[23] = "¡Muy bien! Acá está pasando algo, ¿no?";
         correctTextToRender[24] = "Las habilidades deben estar detalladas y presentadas de manera clara.";
-        correctTextToRender[25] = "¡Es un detalle pero mientras más claros seamos mejor!. Ya estamos terminando...";
+        correctTextToRender[25] = "¡Es un detalle pero mientras más claros seamos mejor! Ya estamos terminando...";
         // Idiomas:
         correctTextToRender[28] = "Saber idiomas es clave, ¿pero qué nivel tenemos?";
         correctTextToRender[29] = "Siempre agreguemos el nivel y el instituto si es que fuimos a uno.";
@@ -191,7 +191,7 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         // Idiomas:
         incorrectTextToRender[28] = "¡Ojo! Saber idiomas es clave, ¿Pero qué nivel tenemos?";
         incorrectTextToRender[29] = "Siempre agreguemos el nivel y el instituto si es que fuimos a uno.";
-        incorrectTextToRender[30] = "Es un detalle pero ¡mientras más claro seamos, mejor! Ya estamos terminando...";
+        incorrectTextToRender[30] = "Es un detalle pero mientras más claro seamos, mejor. Ya estamos terminando...";
         // Contacto:
         incorrectTextToRender[33] = "¡Ojo! ¿Qué te pareció raro en esta sección?";
         incorrectTextToRender[34] = "Es concreta y contiene lo necesario.";

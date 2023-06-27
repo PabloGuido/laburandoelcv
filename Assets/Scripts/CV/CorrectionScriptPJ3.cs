@@ -170,7 +170,7 @@ public class CorrectionScriptPJ3 : MonoBehaviour
         // Name:
         incorrectTextToRender[3] = "¡Cuidado! Acá nos estaría faltando algo...¿Qué será?";
         incorrectTextToRender[4] = "¡Claro! No olvidemos agregar nuestra profesión o puesto al que apuntamos en el CV.";
-        incorrectTextToRender[5] = "Por cierto, este CV tiene foto. Recordá que no es obligatoria. Continuemos.";
+        incorrectTextToRender[5] = "Y una cosa más. Este CV no tiene foto, recordá que no es obligatoria. Continuemos.";
         // Presentation:
         incorrectTextToRender[8] = "¡Ojo! ¿Encontraste algo raro?";
         incorrectTextToRender[9] = "Expresa muy claramente quién es y sus intenciones de búsqueda.";
