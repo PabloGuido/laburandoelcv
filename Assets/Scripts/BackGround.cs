@@ -24,8 +24,10 @@ public class BackGround : MonoBehaviour
     private Color mainMenuColor;
     //
     private Image littleLogo;
+    // sounds:
+    private AudioSource introMusic;
+    private AudioSource mainMenuSound;
     
-    private int firstTimeBootingGame = 0;
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class BackGround : MonoBehaviour
 
         Instance = this; 
         DontDestroyOnLoad(gameObject);
-        firstTimeBootingGame ++;
+        
         //
         mask = gameObject.transform.Find("Mask").gameObject;
         mainMenu = mask.transform.Find("MainMenu").GetComponent<Image>();
@@ -59,11 +61,26 @@ public class BackGround : MonoBehaviour
         //
         littleLogo = gameObject.transform.Find("Border").transform.Find("Logo").GetComponent<Image>();
         //
-
+        introMusic = GetComponent<AudioSource>();
+        if (!introMusic.isPlaying){
+            introMusic.Play();
+        }
+        mainMenuSound = mask.transform.Find("MainMenu").GetComponent<AudioSource>();
         
     }
+
+    public void playSound(string whichAudio){
+        if (whichAudio == "mainMenu"){
+            mainMenuSound.Play();
+        }
+        
+    }
+
     private void killStarRotation(){
         DOTween.Kill(starRt, false);
+    }
+    private void stopIntroMusic(){
+        introMusic.Stop();
     }
 
     private void changeBackground(int sceneNumber){
@@ -79,6 +96,7 @@ public class BackGround : MonoBehaviour
             middleImg.DOColor(alphaOne, 2);            
         }
         else if (sceneNumber > 3){
+            introMusic.DOFade(0,2).OnComplete(stopIntroMusic);
             middleImg.DOColor(alphaZero, 2);
             gameImg.DOColor(alphaOne, 2);
         }

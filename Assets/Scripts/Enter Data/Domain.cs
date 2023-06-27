@@ -8,8 +8,15 @@ using DG.Tweening;
 
 public class Domain : MonoBehaviour
 {
+    public static Domain Instance;
     [SerializeField] private GameObject dropDown;
     private Button domainButton;
+    private AudioSource clicked;
+
+    private void Awake()
+    {
+        Instance = this;        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +24,16 @@ public class Domain : MonoBehaviour
         dropDown.SetActive(false);
 
         domainButton.onClick.AddListener(openOrcloseDropDown);
+
+        clicked = GetComponent<AudioSource>();
+    }
+
+    public void playSound(){
+        clicked.Play();
     }
 
     private void openOrcloseDropDown(){
+        clicked.Play();
         if (EnterData.Instance.playerCanClick){
             if (!dropDown.activeSelf){
                 dropDown.SetActive(true);

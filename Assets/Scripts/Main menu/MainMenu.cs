@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
     private GameObject touchToStart;
     //
     private GameObject helpAfriend;
+    // sound
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,8 @@ public class MainMenu : MonoBehaviour
         //
         helpAfriend = gameObject.transform.Find("HelpAfriend").gameObject;
         helpAfriend.GetComponent<Image>().DOColor(new Color(1,1,1,0), .75f).From();
+        //
+        
     }
 
     void Update()
@@ -57,6 +62,7 @@ public class MainMenu : MonoBehaviour
     }
 
     private void fadeOutAll(){
+        BackGround.Instance.playSound("mainMenu");
         playerCanClick = false;
         touchToStart.GetComponent<Animator>().enabled = false;
         touchToStart.GetComponent<Image>().enabled = true;

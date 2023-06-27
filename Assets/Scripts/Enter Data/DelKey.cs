@@ -14,6 +14,7 @@ public class DelKey : MonoBehaviour
     private Button thisButton;
     //
     [SerializeField] private TMP_InputField mailField;
+    private AudioSource clickedAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class DelKey : MonoBehaviour
 
         thisButton = gameObject.transform.GetComponent<Button>();
         thisButton.onClick.AddListener(removeKeyToField);
+        clickedAudio = GetComponent<AudioSource>();
     }
 
     private void setButtonScale(){
@@ -30,6 +32,7 @@ public class DelKey : MonoBehaviour
 
     void removeKeyToField(){
         gameObject.GetComponent<RectTransform>().DOScale(2f, 0.25f).From().OnComplete(setButtonScale);
+        clickedAudio.Play();
         if (EnterData.Instance.playerCanClick){
             if (mailField.text.Length > 0){
                 mailField.text = mailField.text.Remove(mailField.text.Length-1,1);

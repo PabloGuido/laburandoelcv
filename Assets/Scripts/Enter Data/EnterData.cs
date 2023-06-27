@@ -15,6 +15,9 @@ public class EnterData : MonoBehaviour
     public bool playerCanClick = false;
     //
     private Button startButton;
+    private GameObject startButtonGO;
+    private AudioSource good;
+    private AudioSource bad;
     //
     [SerializeField] private TMP_Text mailField;
     [SerializeField] private TMP_Text domainField;
@@ -37,6 +40,9 @@ public class EnterData : MonoBehaviour
         //
         startButton = gameObject.transform.Find("Start").GetComponent<Button>();
         startButton.onClick.AddListener(askGoToNextScene);
+        startButtonGO = transform.Find("Start").gameObject;
+        good = startButtonGO.transform.Find("good").GetComponent<AudioSource>();
+        bad = startButtonGO.transform.Find("bad").GetComponent<AudioSource>();
         //
         needMail = gameObject.transform.Find("NeedMail").gameObject;
         needMail.SetActive(false);
@@ -74,6 +80,7 @@ public class EnterData : MonoBehaviour
 
     private void pleaseEnterValidMail(){
         if (!needMail.activeSelf){
+            bad.Play();
             playerCanClick = false;
             dropDown.SetActive(false);
             needMail.SetActive(true);
@@ -86,6 +93,7 @@ public class EnterData : MonoBehaviour
     }
 
     private void hideKeyboard(){
+        good.Play();
         playerCanClick = false;
         gameObject.transform.Find("Start").GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.25f);
         leaveData.DOColor(new Color(1,1,1,0), 0.85f);

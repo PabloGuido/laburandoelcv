@@ -15,6 +15,8 @@ public class Key : MonoBehaviour
     //
     [SerializeField] private GameObject dropDown;
     [SerializeField] private TMP_InputField mailField;
+    // 
+    private AudioSource clickedAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class Key : MonoBehaviour
 
         thisButton = gameObject.transform.GetComponent<Button>();
         thisButton.onClick.AddListener(addKeyToField);
+
+        clickedAudio = GetComponent<AudioSource>();
     }
     private void setButtonScale(){
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.785714f,1.724138f,1);
@@ -30,6 +34,7 @@ public class Key : MonoBehaviour
 
     void addKeyToField(){
         gameObject.GetComponent<RectTransform>().DOScale(3f, 0.25f).From().OnComplete(setButtonScale);
+        clickedAudio.Play();
         if (EnterData.Instance.playerCanClick){
 
         

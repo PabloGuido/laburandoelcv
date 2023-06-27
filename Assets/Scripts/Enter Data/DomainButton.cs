@@ -13,6 +13,7 @@ public class DomainButton : MonoBehaviour
     //
     [SerializeField] private GameObject dropDown;
     [SerializeField] private TMP_Text dropDownButtonText;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,13 @@ public class DomainButton : MonoBehaviour
         domainText = gameObject.transform.Find("DomainText").GetComponent<TMP_Text>().text;
         //
         thisButton.onClick.AddListener(selectDomain);
-
+        
     }
 
     private void selectDomain(){
+        
         if (EnterData.Instance.playerCanClick){
+            Domain.Instance.playSound();
             dropDown.SetActive(false);
             dropDownButtonText.text = domainText;
         }

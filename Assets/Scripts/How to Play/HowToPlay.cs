@@ -31,7 +31,7 @@ public class HowToPlay : MonoBehaviour
     GameObject arrow;
 
     TMP_Text textBoxText;
-
+    
     private string[] texts = new string[6];
     int textsCount = 0;
     //
@@ -117,20 +117,24 @@ public class HowToPlay : MonoBehaviour
             case 0:
                 audioData.Play();
                 textBoxText.text = texts[textsCount];
+                textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
             break;
             case 1:
                 audioData.Play();
                 textBoxText.text = texts[textsCount];
+                textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
                 showCv();
             break;
             case 2:
                 audioData.Play();
                 textBoxText.text = texts[textsCount];
+                textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
                 showHandAndClick();
             break;
             case 3:
                 audioData.Play();
                 textBoxText.text = texts[textsCount];
+                textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
                 killAllTweens();
             break;
             case 4:

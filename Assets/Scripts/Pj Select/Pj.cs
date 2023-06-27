@@ -12,12 +12,14 @@ public class Pj : MonoBehaviour
     private Button thisButton;
     private bool fadeThis = true;
     private bool thisOneWasClicked = false;
+    private AudioSource clickedAudio;
     // Start is called before the first frame update
     void Start()
     {
         thisButton = gameObject.GetComponent<Button>();
         thisButton.onClick.AddListener(fadePjs);
         gameObject.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.75f).From();
+        clickedAudio = GetComponent<AudioSource>();
     }
 
     void Update(){
@@ -41,6 +43,7 @@ public class Pj : MonoBehaviour
 
 
     void fadePjs(){
+        clickedAudio.Play();
         if (PjSelect.Instance.playerCanClick){
             PjSelect.Instance.playerCanClick = false;
             thisOneWasClicked = true;
