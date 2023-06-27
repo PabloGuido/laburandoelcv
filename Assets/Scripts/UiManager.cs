@@ -31,6 +31,10 @@ public class UiManager : MonoBehaviour
     AudioSource song;
     AudioSource times;
     AudioSource textBoxClick;
+    AudioSource correct;
+    AudioSource vibra;
+    bool soundedSpecialSound = false;
+    AudioSource build;
     // Timer:
     [SerializeField] private int timer;
     TMP_Text timerText;
@@ -92,7 +96,9 @@ public class UiManager : MonoBehaviour
         countDownGoSound = countDownGO.transform.Find("go").GetComponent<AudioSource>();
         song = countDownGO.transform.Find("song").GetComponent<AudioSource>();
         times = countDownGO.transform.Find("times").GetComponent<AudioSource>();
-        
+        correct = countDownGO.transform.Find("correct").GetComponent<AudioSource>();
+        vibra = countDownGO.transform.Find("vibra").GetComponent<AudioSource>();
+        build = countDownGO.transform.Find("build").GetComponent<AudioSource>();
         //Timer Time:
         //timer = 60; // In case of need or in the final build put set timer here. Maybe we can add a setting for this, at least yes for testing.
         
@@ -265,7 +271,7 @@ public class UiManager : MonoBehaviour
         case "awnser":
             // code block            
             updateTextBoxWithAwnser();
-            scaleAndSoundText();
+            //scaleAndSoundText();
             showCorrectIcon();
             allowPlayerClickAndShowArrow(true);
             break;
@@ -285,6 +291,7 @@ public class UiManager : MonoBehaviour
             break; 
         case "next":
             // code block
+            soundedSpecialSound = false;
             updateTextBox();
             scaleAndSoundText();
             allowPlayerClickAndShowArrow(false);
@@ -369,6 +376,7 @@ public class UiManager : MonoBehaviour
         textsAndPos.CvSectionsGO[moveTowardsNumber].hideBorder();
     }
     void createBuildUp(){
+        build.Play();
         textsAndPos.CvSectionsPos[moveTowardsNumber].transform.DOScale(1.1f, 2).OnComplete(buildUpImpactAndContinue);
         
     }
@@ -409,10 +417,24 @@ public class UiManager : MonoBehaviour
             if (markedAsIncorrectByPlayer){
                 playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    correct.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
             else if (!markedAsIncorrectByPlayer){
                 playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    vibra.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
         } 
         //
@@ -420,10 +442,24 @@ public class UiManager : MonoBehaviour
             if (markedAsIncorrectByPlayer){
                 playerAwnseredRight = false;
                 textBoxText.text = textsAndPos.incorrectTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    vibra.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
             else if (!markedAsIncorrectByPlayer){
                 playerAwnseredRight = true;
                 textBoxText.text = textsAndPos.correctTextToRender[stepNumber];
+                if (!soundedSpecialSound){
+                    soundedSpecialSound = true;
+                    correct.Play();
+                }
+                else{
+                    scaleAndSoundText();
+                }
             }
         }
         
