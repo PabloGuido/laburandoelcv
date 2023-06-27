@@ -29,6 +29,8 @@ public class UiManager : MonoBehaviour
     AudioSource countDownShort;
     AudioSource countDownGoSound;
     AudioSource song;
+    AudioSource times;
+    AudioSource textBoxClick;
     // Timer:
     [SerializeField] private int timer;
     TMP_Text timerText;
@@ -89,6 +91,8 @@ public class UiManager : MonoBehaviour
         countDownShort = countDownGO.transform.Find("short").GetComponent<AudioSource>();
         countDownGoSound = countDownGO.transform.Find("go").GetComponent<AudioSource>();
         song = countDownGO.transform.Find("song").GetComponent<AudioSource>();
+        times = countDownGO.transform.Find("times").GetComponent<AudioSource>();
+        
         //Timer Time:
         //timer = 60; // In case of need or in the final build put set timer here. Maybe we can add a setting for this, at least yes for testing.
         
@@ -107,6 +111,7 @@ public class UiManager : MonoBehaviour
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
         textBoxImg = textBox.GetComponent<Image>();
         textBoxImg.color = yellow;
+        textBoxClick = textBox.GetComponent<AudioSource>();
 
         textBoxArrow = textBox.transform.Find("Arrow").gameObject;        
         iconWrong = textBox.transform.Find("IconWrong").gameObject;
@@ -240,6 +245,7 @@ public class UiManager : MonoBehaviour
         case "read":
             // code block
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             Debug.Log("READ");
             break;
@@ -259,6 +265,7 @@ public class UiManager : MonoBehaviour
         case "awnser":
             // code block            
             updateTextBoxWithAwnser();
+            scaleAndSoundText();
             showCorrectIcon();
             allowPlayerClickAndShowArrow(true);
             break;
@@ -266,17 +273,20 @@ public class UiManager : MonoBehaviour
             // code block
             doTheCorrection();
             updateTextBoxWithAwnser();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             break;
         case "settle":
             // code block
             hideBorderAndIcon();
             updateTextBoxWithAwnser();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
             break; 
         case "next":
             // code block
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(false);
             moveTowardsNumber ++;
             moveTowards();
@@ -286,6 +296,7 @@ public class UiManager : MonoBehaviour
             // code block
             endZoom();
             updateTextBox();
+            scaleAndSoundText();
             allowPlayerClickAndShowArrow(false);
             updatePageTitle(true, "LECTURA FINAL");
             break;
@@ -299,6 +310,7 @@ public class UiManager : MonoBehaviour
             else{
                 allowPlayerClickAndShowArrow(false);
                 updateTextBox();
+                scaleAndSoundText();
                 cueEndScene();
                 updatePageTitle(true, "LABURANDO EL CV");
                 break;
@@ -389,6 +401,7 @@ public class UiManager : MonoBehaviour
     }
     void updateTextBoxWithAwnser(){
         // The correct awnsers.
+        
         bool sectionIsIncorrect = textsAndPos.CvSectionsGO[moveTowardsNumber].isIncorrect;
         bool markedAsIncorrectByPlayer = textsAndPos.CvSectionsGO[moveTowardsNumber].markedAsIncorrect;
 
@@ -414,9 +427,15 @@ public class UiManager : MonoBehaviour
             }
         }
         
+        
+    }
+    void scaleAndSoundText(){
+        textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
+        textBoxClick.Play();
     }
     void updateTextBox(){       
         textBoxText.text = textsAndPos.textToRender[stepNumber];
+        
     }
 
     void showTextBox(){
@@ -440,6 +459,7 @@ public class UiManager : MonoBehaviour
             correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.45f);
             gameCorrectingCv = true;
             showTextBox();
+            BackGround.Instance.playSound("introMusic");
         }
         else{
             correctionImg.SetActive(true);
@@ -466,6 +486,7 @@ public class UiManager : MonoBehaviour
         }
         else {
             Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
+            times.Play();
             song.DOFade(0, 3.5f);
             timesUp.SetActive(true);
             timesUp.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.5f).From();

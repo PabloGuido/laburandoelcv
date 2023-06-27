@@ -73,6 +73,9 @@ public class BackGround : MonoBehaviour
         if (whichAudio == "mainMenu"){
             mainMenuSound.Play();
         }
+        else if (whichAudio == "introMusic"){
+            introMusic.Play();
+        }
         
     }
 
@@ -81,6 +84,7 @@ public class BackGround : MonoBehaviour
     }
     private void stopIntroMusic(){
         introMusic.Stop();
+        introMusic.volume = 0.25f;
     }
 
     private void killMiddleMovement(){
