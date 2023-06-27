@@ -27,6 +27,7 @@ public class Section : MonoBehaviour
     // Animator
     private Animator blinkAnim;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,8 @@ public class Section : MonoBehaviour
 
         blinkAnim = correctOption.transform.GetComponent<Animator>();
         blinkAnim.enabled = false;
+        // sounds
+
         // Icons:
         iconWrong = border.transform.Find("IconWrong").gameObject;
         iconRight = border.transform.Find("IconRight").gameObject;
@@ -64,6 +67,7 @@ public class Section : MonoBehaviour
         // Add the method on click
         thisSection.onClick.AddListener(taskOnClick);
         //
+
         
         
     }
@@ -150,11 +154,11 @@ public class Section : MonoBehaviour
         if (AllowPlayerToClick.Instance.playerInputAllowed ){
             if (!markedAsIncorrect){
                 sectionMarkedAsIncorrect(true);
-                
+                SoundsBorder.Instance.soundOn(true);
             }
             else {
                 sectionMarkedAsIncorrect(false);
-                
+                SoundsBorder.Instance.soundOn(false);
             }
             //Debug.Log(thisSection + " : " + markedAsIncorrect);
         }
