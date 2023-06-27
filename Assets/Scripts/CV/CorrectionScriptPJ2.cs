@@ -75,129 +75,128 @@ public class CorrectionScriptPJ2 : MonoBehaviour
         "endZoom","read","read","read","read","read",
         "cueEndScene","cueEndScene","cueEndScene","cueEndScene","cueEndScene",
         };
-
+ 
         textToRender = new string[100];
         // Presentation:
-        textToRender[0] = "0: Muy bien, corrijamos el cv. Empecemos por el perfil.";
-        textToRender[1] = "1: Muy bien, corrijamos el cv. Empecemos por el perfil.";
-        textToRender[2] = "2: Veamos...";    
-        textToRender[3] = "3: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[4] = "4: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[5] = "5: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[6] = "6: Revisemos la formación.";
+        textToRender[0] = "Muy bien, corrijamos el CV. Empecemos por el perfil...";
+        textToRender[1] = "Muy bien, corrijamos el CV. Empecemos por el perfil...";
+        textToRender[2] = "Veamos...";    
+        textToRender[3] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[4] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[5] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[6] = "Revisemos la formación...";
         // Education:
-        textToRender[7] = "7: A ver que pasa acá...";
-        textToRender[8] = "8:CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[9] = "9: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[10] = "10: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[11] = "11: Miremos la experiencia.";
+        textToRender[7] = "A ver que pasa acá...";
+        textToRender[8] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[9] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[10] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[11] = "Miremos la experiencia...";
         // Experience:
-        textToRender[12] = "12: A ver...";
-        textToRender[13] = "13:CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[14] = "14: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[15] = "15: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[16] = "16: Y a ver esos cursos...";
+        textToRender[12] = "A ver...";
+        textToRender[13] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[14] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[15] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[16] = "Y a ver esos cursos...";
         // Ad Ed:
-        textToRender[17] = "17: Veamos...";
-        textToRender[18] = "18: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[19] = "19: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[20] = "20: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[21] = "21: Miremos las habilidades y conocimientos.";
+        textToRender[17] = "Veamos...";
+        textToRender[18] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[19] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[20] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[21] = "Miremos las habilidades y conocimientos...";
         // Abilities:
-        textToRender[22] = "22: A ver...";
-        textToRender[23] = "23: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[24] = "24: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[25] = "25: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[26] = "26: Veamos los idiomas.";
+        textToRender[22] = "A ver...";
+        textToRender[23] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[24] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[25] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[26] = "Veamos los idiomas...";
         // Lenguages:
-        textToRender[27] = "27: Veamos...";
-        textToRender[28] = "28: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[29] = "29: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[30] = "30: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[31] = "31: Y por último la info de contacto.";
+        textToRender[27] = "Veamos...";
+        textToRender[28] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[29] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[30] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[31] = "Y por último la información de contacto..";
         // Lenguages:
-        textToRender[32] = "27: A ver que pasa acá...";
-        textToRender[33] = "28: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[34] = "29: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[35] = "30: CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
-        textToRender[36] = "31: Y con esto vimos todo el CV!";
+        textToRender[32] = "A ver que pasa acá...";
+        textToRender[33] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[34] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[35] = "CORRECT OR INCORRECT TEXT HERE, NOT MENT TO BE READ.";
+        textToRender[36] = "¡Terminamos, revisamos todo el CV!";
 
         
         // End game:
-        textToRender[37] = "32: Dale una última leída y fijate como quedó.";
-        textToRender[38] = "33: Recordá siempre revisar muy bien tu CV.";
-        textToRender[39] = "34: Pedí a tus conocidos y amigos que lo revisen y te den una devolución sobre el mismo también.";
-        textToRender[40] = "35: Otro par de ojos nunca está de mas!";
-        textToRender[41] = "36: Con esto llegamos al final. Espero que alguno de estos consejos te puedan servir :D";
-        textToRender[42] = "37: Gracias por jugar!";
-        textToRender[43] = "38: Desarrollador por:\nPablo Sonaglioni \n @pgs1000";
-        textToRender[44] = "39: @emmyta";
-        textToRender[45] = "41: Especial gracias para Lorena Escobedo";
+        textToRender[37] = "Démosle una última leída y fijémonos cómo quedó.";
+        textToRender[38] = "Recordá siempre revisar muy bien tu CV.";
+        textToRender[39] = "Te recomendamos pedirle a amigos o conocidos que también lo vean y te den una devolución.";
+        textToRender[40] = "¡Otro par de ojos nunca están de más!";
+        textToRender[41] = "Con esto llegamos al final. ¡Esperamos que te sirvan alguno de estos consejos! :D";
+        textToRender[42] = "— GRACIAS POR JUGAR —";
+        textToRender[43] = "Desarrollo:\nPablo Sonaglioni \n @pgs1000";
+        textToRender[44] = "Diseño gráfico:\nEmmanuel Schönfeld Estani \n @_emmyta";
+        textToRender[45] = "Agradecimientos especiales \n Lorena Escobedo";
 
         // Correct awnsered by player text:
         correctTextToRender = new string[100];
-        // Photo + Name:
-        correctTextToRender[3] = "3: Bien! Te diste cuenta que este perfil no nos está diciendo mucho, no?";
-        correctTextToRender[4] = "4: El perfil nos la oportunidad de poder presentar quién somos, qué buscamos y qué podemos aportar.";
-        correctTextToRender[5] = "5: Muchísimo mas concreto ahora este perfil. A enfocarse en lo que somos capaces!";
-        // Presentation:
-        correctTextToRender[8] = "8: Bien! Los estudios están bien pero sin fechas.";
-        correctTextToRender[9] = "9: Omitir fechas o no tener precisiones puede ser un error común mientras hacemos un cv.";
-        correctTextToRender[10] = "10: Es importante que no se nos olvide esto! A ver que sigue..";
-        // Education:
-        correctTextToRender[13] = "13: Seguro que dentro de esas responsabilidades haya mas detalles, no?";
-        correctTextToRender[14] = "14: Mirá la cantidad de capacidades que involucran estas actividades y que cambio hace.";
-        correctTextToRender[15] = "15: Estas experiencias pueden tener relación directa con un aviso al que deseamos postularnos! Muy clave esto!";
-        // Experience:
-        correctTextToRender[18] = "18: Bien! Dígale SÍ a los cursos adicionales y NO a las faltas ortográficas!";
-        correctTextToRender[19] = "19: Muy importante estar atento a estas cosas.";
-        correctTextToRender[20] = "20: Genial! Continuemos con el CV.";
-        // Abilities:
-        correctTextToRender[23] = "23: Muy bien! Acá está pasando algo, no?";
-        correctTextToRender[24] = "24: Recordá! Las habilidades deben estar detalladas y de manera clara.";
-        correctTextToRender[25] = "25: Es un detalle pero mientras mas claro seamos mejor! Ya estamos terminando...";
-        // Lenguage:
-        correctTextToRender[28] = "28: Saber idiomas es clave, pero qué nivel tenemos?";
-        correctTextToRender[29] = "29: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
-        correctTextToRender[30] = "30: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
-        // Contact:
-        correctTextToRender[33] = "28: Perfecto, esta información de contacto está correcta.";
-        correctTextToRender[34] = "29: Es concreta y contiene lo necesario.";
-        correctTextToRender[35] = "30: Siempre es muy importante revistar que no haya ninguna falta y esté actualizada.";
+        // Perfil:
+        correctTextToRender[3] = "¡Bien! Te diste cuenta que este perfil no nos está diciendo mucho, ¿no?";
+        correctTextToRender[4] = "El perfil nos da la oportunidad de poder presentar quién somos, qué buscamos y qué podemos aportar.";
+        correctTextToRender[5] = "¡Genial! Ahora es mucho más concreto. ¡Tenemos que enfocarnos en contar de que somos capaces!";
+        // Formación académica:
+        correctTextToRender[8]  = "¡Bien! Los estudios están correctos pero no especifican fechas.";
+        correctTextToRender[9]  = "Omitir fechas o no tener precisiones puede ser un error común.";
+        correctTextToRender[10] = "Es importante que no se nos olvide esto. A ver qué sigue...";
+        // Voluntariado:
+        correctTextToRender[13] = "Seguro que dentro de esas responsabilidades puede haber mas detalle, ¿no?";
+        correctTextToRender[14] = "Mirá la cantidad de capacidades que involucran estas actividades y el que cambio hacen.";
+        correctTextToRender[15] = "¡Estas experiencias pueden tener relación directa con un aviso al que deseamos postularnos!";
+        // Cursos adicionales:
+        correctTextToRender[18] = "¡Bien! Digámosle SÍ a los cursos adicionales y NO a las faltas ortográficas.";
+        correctTextToRender[19] = "Hay que estar atento a estas cosas.";
+        correctTextToRender[20] = "Continuemos.";
+        // Habilidades y competencias:
+        correctTextToRender[23] = "¡Muy bien! Acá está pasando algo, ¿no?";
+        correctTextToRender[24] = "Las habilidades deben estar detalladas y presentadas de manera clara.";
+        correctTextToRender[25] = "¡Es un detalle pero mientras más claros seamos mejor!. Ya estamos terminando...";
+        // Idiomas:
+        correctTextToRender[28] = "Saber idiomas es clave, ¿pero qué nivel tenemos?";
+        correctTextToRender[29] = "Siempre agreguemos el nivel y el instituto si es que fuimos a uno.";
+        correctTextToRender[30] = "Esto siempre va a ayudar a reforzar nuestras postulaciones.";
+        // Contacto:
+        correctTextToRender[33] = "¡Perfecto! Esta información está correcta.";
+        correctTextToRender[34] = "Es concreta y contiene lo necesario.";
+        correctTextToRender[35] = "Es muy importante revistar que no falte nada importante y que esté actualizada.";
 
 
         // Wrongly awnsered by player:
         incorrectTextToRender = new string[100];
-        // Photo + Name:
-        incorrectTextToRender[3] = "3: ¡Cuidado! Quizás no te parezca pero  este perfil no nos está diciendo mucho.";
-        incorrectTextToRender[4] = "4: El perfil nos la oportunidad de poder presentar quien somos, que buscamos y que podemos aportar.";
-        incorrectTextToRender[5] = "5: Fijate ahora qué tal. Muchísimo mas concreto este perfil. A enfocarse en lo que somos capaces!";
-        // Presentation:
-        incorrectTextToRender[8] = "8: Ojo! Fijate bien, no te parece que falta algo?";
-        incorrectTextToRender[9] = "9: Omitir fechas o no tener precisiones puede ser un error común mientras hacemos un cv.";
-        incorrectTextToRender[10] = "10: Estemos atentos con esto para la próxima! A ver que sigue..";
-        // Education:
-        incorrectTextToRender[13] = "13: Mirá las responsabilidades, seguramente esas tareas conlleven mas detalles del que dicen..";
-        incorrectTextToRender[14] = "14: Mirá la cantidad de capacidades que involucran estas actividades y que cambio hace.";
-        incorrectTextToRender[15] = "15: Estas experiencias pueden tener relación directa con un aviso al que deseamos postularnos! Muy clave esto!";
-        // Experience:
-        incorrectTextToRender[18] = "18: Cuidado! Dígale SÍ a los cursos adicionales y NO a las faltas ortográficas!";
-        incorrectTextToRender[19] = "19: Muy importante estar atento a estas cosas. Mirá la corrección en el CV!";
-        incorrectTextToRender[20] = "20: A no olvidar buscar por este tipo de fallas cuando armamos el CV! Sigamos.";
-        // Abilities:
-        incorrectTextToRender[23] = "23: Ojo! Acá está pasando algo!";
-        incorrectTextToRender[24] = "24: Recordá! Las habilidades deben estar detalladas y de manera clara.";
-        incorrectTextToRender[25] = "25: Es un detalle pero mientras mas claro seamos mejor! Ya estamos terminando...";
-        // Lenguage:
-        incorrectTextToRender[28] = "28: Ojo! Saber idiomas es clave, pero qué nivel tenemos?";
-        incorrectTextToRender[29] = "29: Siempre agreguemos el nivel y el instituto si es que fuimos a uno!";
-        incorrectTextToRender[30] = "30: Esto siempre va a ayudar a reforzar nuestras postulaciones sin dudas.";
-        // Contact:
-        incorrectTextToRender[33] = "28: Ojo. Qué te pareció raro de esta sección?";
-        incorrectTextToRender[34] = "29: La información de contacto no necesita ser extensa.";
-        incorrectTextToRender[35] = "30: Pero es muy importante revistar que no haya ninguna falta y que esté actualizada.";
+        // Perfil:
+        incorrectTextToRender[3] = "¡Cuidado! Este perfil no nos está diciendo mucho.";
+        incorrectTextToRender[4] = "El perfil nos da la oportunidad de poder presentar quién somos, qué buscamos y qué podemos aportar.";
+        incorrectTextToRender[5] = "Fijate ahora. ¡Muchísimo mas concreto! Tenemos que enfocarnos en lo que somos capaces.";
+        // Formación académica:
+        incorrectTextToRender[8]  = "¡Ojo! Fijate bien, ¿no te parece que falta algo?";
+        incorrectTextToRender[9]  = "Omitir fechas o no tener precisiones puede ser un error común.";
+        incorrectTextToRender[10] = "¡Estemos atentos con esto para la próxima! A ver que sigue...";
+        // Voluntariado:
+        incorrectTextToRender[13] = "Seguramente esas tareas conlleven mas detalles del que dicen.";
+        incorrectTextToRender[14] = "Mirá la cantidad de capacidades que involucran estas actividades y el que cambio hacen.";
+        incorrectTextToRender[15] = "Estas experiencias pueden tener relación directa con un aviso al que deseamos postularnos. ¡Muy clave esto!";
+        // Cursos adicionales:
+        incorrectTextToRender[18] = "¡Cuidado! Digámosle SÍ a los cursos adicionales y NO a las faltas ortográficas";
+        incorrectTextToRender[19] = "Hay que estar atento a estas cosas.";
+        incorrectTextToRender[20] = "Continuemos.";
+        // Habilidades y competencias:
+        incorrectTextToRender[23] = "¡Ojo! Acá está pasando algo.";
+        incorrectTextToRender[24] = "Las habilidades deben estar detalladas y presentadas de manera clara.";
+        incorrectTextToRender[25] = "Es un detalle pero mientras mas claro seamos mejor. Ya estamos terminando...";
+        // Idiomas:
+        incorrectTextToRender[28] = "¡Ojo! Saber idiomas es clave, ¿Pero qué nivel tenemos?";
+        incorrectTextToRender[29] = "Siempre agreguemos el nivel y el instituto si es que fuimos a uno.";
+        incorrectTextToRender[30] = "Es un detalle pero ¡mientras más claro seamos, mejor! Ya estamos terminando...";
+        // Contacto:
+        incorrectTextToRender[33] = "¡Ojo! ¿Qué te pareció raro en esta sección?";
+        incorrectTextToRender[34] = "Es concreta y contiene lo necesario.";
+        incorrectTextToRender[35] = "Es muy importante revistar que no falte nada importante y que esté actualizada.";
     }
 
 
 }
-

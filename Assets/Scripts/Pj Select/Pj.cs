@@ -43,8 +43,9 @@ public class Pj : MonoBehaviour
 
 
     void fadePjs(){
-        clickedAudio.Play();
+        
         if (PjSelect.Instance.playerCanClick){
+            clickedAudio.Play();
             PjSelect.Instance.playerCanClick = false;
             thisOneWasClicked = true;
             gameObject.GetComponent<RectTransform>().DOScale(0.565f, 0.5f).From().OnComplete(fadeOffAllPj);
