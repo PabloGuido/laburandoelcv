@@ -34,7 +34,8 @@ public class HowToPlay : MonoBehaviour
 
     private string[] texts = new string[6];
     int textsCount = 0;
-    
+    //
+    AudioSource audioData;    
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,9 @@ public class HowToPlay : MonoBehaviour
 
         showShowTextBox();        
         BackGround.Instance.updatePageTitle(true, "¿CÓMO JUGAR?");
+        //
+        audioData = GetComponent<AudioSource>();
+        
     }
 
     void Update()
@@ -108,23 +112,29 @@ public class HowToPlay : MonoBehaviour
 
 
     private void showText(){
+        
         switch(textsCount){
             case 0:
+                audioData.Play();
                 textBoxText.text = texts[textsCount];
             break;
             case 1:
+                audioData.Play();
                 textBoxText.text = texts[textsCount];
                 showCv();
             break;
             case 2:
+                audioData.Play();
                 textBoxText.text = texts[textsCount];
                 showHandAndClick();
             break;
             case 3:
+                audioData.Play();
                 textBoxText.text = texts[textsCount];
                 killAllTweens();
             break;
             case 4:
+                audioData.Play();
                 alphaOutElements();
                 
             break;
