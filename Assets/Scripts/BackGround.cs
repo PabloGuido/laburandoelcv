@@ -106,8 +106,6 @@ public class BackGround : MonoBehaviour
         }
         else if (sceneNumber == 1){
             mainMenu.DOColor(alphaZero, 2);        
-            
-
             middleImg.DOColor(alphaOne, 2).OnComplete(moveMiddleImg);            
         }
         else if (sceneNumber > 3){
@@ -134,6 +132,7 @@ public class BackGround : MonoBehaviour
 
     public void showLittleLogoAndFadeStar(){
         star.DOColor(alphaZero, 1.25f).OnComplete(killStarRotation);
+        DOTween.Kill(littleLogo);
         littleLogo.DOColor(alphaOne, 2);
     }
 

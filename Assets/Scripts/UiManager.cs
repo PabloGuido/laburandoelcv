@@ -71,6 +71,7 @@ public class UiManager : MonoBehaviour
     //
     private Image pageTitle;
     private TMP_Text pageTitleText;
+    private RectTransform textBoxTextRT;
 
     private void Awake()
     {
@@ -115,6 +116,7 @@ public class UiManager : MonoBehaviour
         // TextBox:
         textBox = gameObject.transform.Find("TextBox").gameObject;
         textBoxText = textBox.transform.Find("TextBoxText").GetComponent<TMP_Text>();
+        textBoxTextRT = textBox.transform.Find("TextBoxText").GetComponent<RectTransform>();
         textBoxImg = textBox.GetComponent<Image>();
         textBoxImg.color = yellow;
         textBoxClick = textBox.GetComponent<AudioSource>();
@@ -271,7 +273,7 @@ public class UiManager : MonoBehaviour
         case "awnser":
             // code block            
             updateTextBoxWithAwnser();
-            //scaleAndSoundText();
+            textBoxTextRT.DOScale(1.1f, 0.15f).From();
             showCorrectIcon();
             allowPlayerClickAndShowArrow(true);
             break;
@@ -466,7 +468,8 @@ public class UiManager : MonoBehaviour
         
     }
     void scaleAndSoundText(){
-        textBoxText.GetComponent<RectTransform>().DOScale(1.1f, 0.15f).From();
+        DOTween.Kill(textBoxTextRT, true);
+        textBoxTextRT.DOScale(1.1f, 0.15f).From();
         textBoxClick.Play();
     }
     void updateTextBox(){       
@@ -502,7 +505,7 @@ public class UiManager : MonoBehaviour
             correctionImg.GetComponent<Image>().DOColor(new Color(1,1,1,0), 0.25f).From();
 
             CvRT.DOScale(0.7f, 1.75f);            
-            CvRT.DOMoveY(CvRT.transform.position.y - 215f, 1.75f);
+            CvRT.DOMoveY(CvRT.transform.position.y - 135f, 1.75f);
 
             Invoke("showCorrectionImg", transTimer);
         }
