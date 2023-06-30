@@ -75,7 +75,7 @@ public class EnterData : MonoBehaviour
             else {
                 SaveMails.Instance.addMailToList(mailField.text + "@" + domainField.text);
                 hideKeyboard();
-                Debug.Log(mailField.text + "@" + domainField.text);
+                //Debug.Log(mailField.text + "@" + domainField.text);
             }
         }
     }

@@ -26,7 +26,7 @@ public class PjSelect : MonoBehaviour
     }
 
     private void allowClick(){
-        Debug.Log("allowing click");
+        //Debug.Log("allowing click");
         playerCanClick = true;
     }
 

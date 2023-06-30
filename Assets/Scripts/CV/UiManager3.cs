@@ -160,14 +160,14 @@ public class UiManager3 : MonoBehaviour
 
                     if (touch.phase == TouchPhase.Began)
                     {
-                        Debug.Log("Working touch");
+                        //Debug.Log("Working touch");
                         
                         whatToDoNext();
                         return;
                     }
             }
             else if (Input.GetMouseButtonDown(0)){ 
-                Debug.Log("Working Click");
+                //Debug.Log("Working Click");
                 whatToDoNext();
                 return;
             }
@@ -228,7 +228,7 @@ public class UiManager3 : MonoBehaviour
             changeTimerText(timer);
             AllowPlayerToClick.Instance.playerInputAllowed = false;
             //
-            Debug.Log("Times up! Execute time up func.");
+            //Debug.Log("Times up! Execute time up func.");
             theTimeIsUp();
             
             //
@@ -255,7 +255,7 @@ public class UiManager3 : MonoBehaviour
             updateTextBox();
             scaleAndSoundText();
             allowPlayerClickAndShowArrow(true);
-            Debug.Log("READ");
+            //Debug.Log("READ");
             break;
         case "animate":
             // code block
@@ -311,7 +311,7 @@ public class UiManager3 : MonoBehaviour
             break;
         case "cueEndScene":
             if (stepNumber == textsAndPos.step.Length-1){
-                Debug.Log("volver a cargar intro screen.");
+                //Debug.Log("volver a cargar intro screen.");
                 updatePageTitle(false, "LABURANDO EL CV");
                 loadMainMenu();
                 break;
@@ -480,7 +480,7 @@ public class UiManager3 : MonoBehaviour
     void showTextBox(){
         textBox.SetActive(true);
         whatToDoNext();
-        Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
+        //Debug.Log("STEP: " + textsAndPos.step[stepNumber]);
     }
 
     void disableCorrectionSemiWhite(){
@@ -517,14 +517,14 @@ public class UiManager3 : MonoBehaviour
             // Disabling visual stuff:
             timesUp.SetActive(false);
             timerGO.SetActive(false);
-            Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
+            //Debug.Log("Deactivating TimesUp! visual cue. Start the correction phase.");
             // Start with the correction phase here.
             //thisCanvas.sortingOrder = 1;
             showCorrectionImg(); 
 
         }
         else {
-            Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
+            //Debug.Log("Activating TimesUp! visual cue and starting timer to self Invoke again.");
             times.Play();
             song.DOFade(0, 3.5f);
             timesUp.SetActive(true);

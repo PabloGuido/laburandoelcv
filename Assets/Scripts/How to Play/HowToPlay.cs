@@ -98,13 +98,13 @@ public class HowToPlay : MonoBehaviour
                     if (touch.phase == TouchPhase.Began)
                     {
                         showText();
-                        Debug.Log("Working touch");
+                        //Debug.Log("Working touch");
                         return;
                     }
             }
             else if (Input.GetMouseButtonDown(0)){ 
                 showText();
-                Debug.Log("Working Click");
+                //Debug.Log("Working Click");
                 return;
             }
         }
