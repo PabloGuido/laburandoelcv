@@ -19,29 +19,26 @@ public class SaveMails : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // mailFolderDirectory = Application.streamingAssetsPath + "/mails/";
-        // txtFileDirectory = mailFolderDirectory + "mails" + ".txt";
+        mailFolderDirectory = Application.streamingAssetsPath + "/mails/";
+        txtFileDirectory = mailFolderDirectory + "mails" + ".txt";
 
-        // if (!Directory.Exists(mailFolderDirectory)){
-        //     Directory.CreateDirectory(Application.streamingAssetsPath + "/mails/");
-        //     File.Create(txtFileDirectory);
-        //     //Debug.Log("Creating directoryand file.");
-        // }
-        // else {
-        //     //Debug.Log("No need to create directory and file.");
-        // }
+        if (!Directory.Exists(mailFolderDirectory)){
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/mails/");
+            File.Create(txtFileDirectory);
+            //Debug.Log("Creating directoryand file.");
+        }
 
         
         /////////////////////////////////////////////////////////////////////
 
         
         
-        persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "/mails/";
-        txtFileDirectory = persistentPath + "mails" + ".txt";
-        if (!Directory.Exists(persistentPath)){
-            Directory.CreateDirectory(persistentPath);
-            File.Create(txtFileDirectory);
-        }
+        // persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "/mails/";
+        // txtFileDirectory = persistentPath + "mails" + ".txt";
+        // if (!Directory.Exists(persistentPath)){
+        //     Directory.CreateDirectory(persistentPath);
+        //     File.Create(txtFileDirectory);
+        // }
         
     }
 
