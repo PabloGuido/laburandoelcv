@@ -9,7 +9,9 @@ public class SaveMails : MonoBehaviour
     //
     private string mailFolderDirectory;
     private string txtFileDirectory;
-
+    //
+    private string path = "";
+    private string persistentPath = "";
     private void Awake()
     {
         Instance = this;
@@ -29,12 +31,37 @@ public class SaveMails : MonoBehaviour
         //     //Debug.Log("No need to create directory and file.");
         // }
 
-        // //Invoke("addMailToList", 5);
-        Debug.Log(Application.persistentDataPath);
         
+        /////////////////////////////////////////////////////////////////////
+        SetPaths();
+                txtFileDirectory = persistentPath + "mails" + ".txt";
+        //File.Create(txtFileDirectory);
+        Invoke("SaveData",3);
     }
 
     public void addMailToList(string mailDir){
         //File.AppendAllText(txtFileDirectory, mailDir + "\n");
     }
+    /////////////////////
+    private void SetPaths()
+    {
+        path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+        persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+    }
+    public void SaveData()
+    {
+        
+        string savePath = persistentPath;
+
+        File.AppendAllText(txtFileDirectory, "234234" + "\n");
+        Debug.Log("Saving Data at " + savePath);
+        string json = new string("\n 123");
+        Debug.Log(json);
+
+        using StreamWriter writer = new StreamWriter(savePath);
+        writer.WriteLine(json);
+        
+        
+    }
+
 }
