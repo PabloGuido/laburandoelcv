@@ -37,10 +37,11 @@ public class DelKey : MonoBehaviour
             if (mailField.text.Length > 0){
                 mailField.text = mailField.text.Remove(mailField.text.Length-1,1);
                 mailField.caretPosition = mailField.text.Length; 
+                if (mailField.text.Length>= 7) mailField.selectionFocusPosition = mailField.text.Length - 7; 
                 mailField.Select();  
-                if (mailField.text.Length <= 11){
-                    mailField.selectionFocusPosition = 0;
-                }    
+                //if (mailField.text.Length <= 11){
+                    //mailField.selectionFocusPosition = 0;
+                //}    
             }  
         }
         //Debug.Log(mailField.text.Length);

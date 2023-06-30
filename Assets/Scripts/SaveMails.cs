@@ -6,11 +6,11 @@ using System.IO;
 public class SaveMails : MonoBehaviour
 {
     public static SaveMails Instance;
-    //
+    // Win:
     private string mailFolderDirectory;
     private string txtFileDirectory;
-    //
-    private string path = "";
+    // Andr:
+    //private string path = "";
     private string persistentPath = "";
     private void Awake()
     {
@@ -33,35 +33,23 @@ public class SaveMails : MonoBehaviour
 
         
         /////////////////////////////////////////////////////////////////////
-        SetPaths();
-                txtFileDirectory = persistentPath + "mails" + ".txt";
-        //File.Create(txtFileDirectory);
-        Invoke("SaveData",3);
+
+        
+        
+        persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "/mails/";
+        txtFileDirectory = persistentPath + "mails" + ".txt";
+        if (!Directory.Exists(persistentPath)){
+            Directory.CreateDirectory(persistentPath);
+            File.Create(txtFileDirectory);
+        }
+        
     }
 
     public void addMailToList(string mailDir){
-        //File.AppendAllText(txtFileDirectory, mailDir + "\n");
-    }
-    /////////////////////
-    private void SetPaths()
-    {
-        path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
-        persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
-    }
-    public void SaveData()
-    {
-        
-        string savePath = persistentPath;
 
-        File.AppendAllText(txtFileDirectory, "234234" + "\n");
-        Debug.Log("Saving Data at " + savePath);
-        string json = new string("\n 123");
-        Debug.Log(json);
-
-        using StreamWriter writer = new StreamWriter(savePath);
-        writer.WriteLine(json);
-        
-        
+        File.AppendAllText(txtFileDirectory, mailDir + "\n");
     }
+
+
 
 }

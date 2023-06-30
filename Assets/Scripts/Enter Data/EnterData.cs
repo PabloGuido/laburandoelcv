@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class EnterData : MonoBehaviour
 {
+    
     [SerializeField] private GameObject cameraToDisable;
     [SerializeField] private bool DisableCamera;
     //
@@ -36,6 +37,7 @@ public class EnterData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TouchScreenKeyboard.hideInput = true;
         if (DisableCamera) cameraToDisable.SetActive(false);
         //
         startButton = gameObject.transform.Find("Start").GetComponent<Button>();

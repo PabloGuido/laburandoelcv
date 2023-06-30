@@ -9309,11 +9309,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
       propertyPath: m_GlobalPointSize
       value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
       propertyPath: m_CustomCaretColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
+      propertyPath: m_HideSoftKeyboard
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4372821977920904675, guid: 44b40abe1e0d92e43a50cd6668aa645f, type: 3}
