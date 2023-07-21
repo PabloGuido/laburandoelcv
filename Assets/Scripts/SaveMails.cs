@@ -19,14 +19,14 @@ public class SaveMails : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mailFolderDirectory = Application.streamingAssetsPath + "/mails/";
-        txtFileDirectory = mailFolderDirectory + "mails" + ".txt";
+        // mailFolderDirectory = Application.streamingAssetsPath + "/mails/";
+        // txtFileDirectory = mailFolderDirectory + "mails" + ".txt";
 
-        if (!Directory.Exists(mailFolderDirectory)){
-            Directory.CreateDirectory(Application.streamingAssetsPath + "/mails/");
-            File.Create(txtFileDirectory);
-            //Debug.Log("Creating directoryand file.");
-        }
+        // if (!Directory.Exists(mailFolderDirectory)){
+        //     Directory.CreateDirectory(Application.streamingAssetsPath + "/mails/");
+        //     File.Create(txtFileDirectory);
+        //     //Debug.Log("Creating directoryand file.");
+        // }
 
         
         /////////////////////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ public class SaveMails : MonoBehaviour
 
     public void addMailToList(string mailDir){
 
-        File.AppendAllText(txtFileDirectory, mailDir + "\n");
+        // File.AppendAllText(txtFileDirectory, mailDir + "\n");
     }
 
 

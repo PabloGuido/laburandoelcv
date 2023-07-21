@@ -55,7 +55,7 @@ public class EnterData : MonoBehaviour
         leaveData = gameObject.transform.Find("LeaveData").GetComponent<Image>();
         leaveData.DOColor(new Color(1,1,1,0), 1f).From();
         //
-        //BackGround.Instance.updatePageTitle(true, "ANTES DE EMPEZAR");
+        BackGround.Instance.updatePageTitle(true, "ANTES DE EMPEZAR");
     }
     private void letPlayerClick(){
         playerCanClick = true;
